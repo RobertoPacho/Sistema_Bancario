@@ -78,9 +78,7 @@ public class Solicitud implements Serializable {
     
     @Column(name = "planilla_serv_basicos")
     private String planillaServBasicos;
-    @JoinColumn(name = "cliente", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Cliente cliente;
+   
 
     public Solicitud() {
     }
@@ -164,13 +162,6 @@ public class Solicitud implements Serializable {
         this.planillaServBasicos = planillaServBasicos;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     @Override
     public int hashCode() {

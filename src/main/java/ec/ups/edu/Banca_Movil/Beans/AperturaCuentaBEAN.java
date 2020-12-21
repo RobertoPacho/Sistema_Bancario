@@ -155,17 +155,7 @@ public class AperturaCuentaBEAN {
 		public List<Cuenta> listaCuentas() throws Exception{
 			return cuentaON.listaCuentas();
 		}
-		
-		public boolean empleadob(String cedula) throws Exception {
-			List<Empleado> listaemp = empleadoON.listaEmpleados();
-			for(int i=0;i < listaemp.size(); i++) {
-				if(listaemp.get(i).getCedula()== cedula) {
-					System.out.println("existe");
-					return true;
-				}
-			}
-			return true;
-		}
+	
 		
 		public List<String> tipos(){
 			List<String> rol=new ArrayList<String>();
@@ -178,7 +168,7 @@ public class AperturaCuentaBEAN {
 		
 		//ation controler
 	    public String doAgregarCuenta() throws Exception {
-	    	if(empleadob("0302295910")) {
+	    	
 	    	Date objDate = new Date();
 	    	String clave=doClave();
 	    	
@@ -204,9 +194,6 @@ public class AperturaCuentaBEAN {
 	    	System.out.println("guardado ojala"+ clave);
 	    	correoON.enviarConGMail(correo, "COOPERATIVA E.S.E", "Bienvenido "+ nombres +" a formar parte de la COOPERATIVA E.S.E  Datos de cuenta USUARIO: "+cedula+" CONTRASEÑA:"+ clave);
 	    	
-	    	}else {
-	    		System.out.println("USUARIO NO ADMITIDO");
-	    	}
 	    	return null;
 	    	
 	    } 

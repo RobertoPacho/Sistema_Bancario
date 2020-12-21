@@ -16,7 +16,7 @@
 			<h:panelGrid columns="2" cellpadding="10"
 				style="width:200px; background:#A9CCE3;">
 				<h:form>
-		  				tipoCuenta:tipo_cuenta
+		  				tipoCuenta:
 						<h:selectOneMenu id="tipoCuenta"
 						value="#{aperturaCuentaBEAN.tipoCuenta}">
 						<f:selectItem itemLabel="cuenta corriente"
@@ -64,7 +64,7 @@
 					<br />
 					<br />
 					<h:commandButton value="GUARDAR"
-						action="#{aperturaCuentaBEAN.doAleatorio()}" />
+						action="#{aperturaCuentaBEAN.doAgregarCuenta()}" />
 
 					<br />
 					<br />
@@ -118,11 +118,10 @@
 			</h:panelGrid>
 		</p:tab>
 		<p:tab title="TRANSACCIONES">
-			<h:panelGrid columns="2" cellpadding="10">
-				<div style="width: 600px">
-					<h2 style="margin-left: 25%; margin-top: 3%;">CREAR CUENTA</h2>
-				</div>
+			<h:panelGrid columns="1">
+				<h2>COOPERATIVA E.S.E</h2>
 			</h:panelGrid>
+
 		</p:tab>
 	</p:tabView>
 
