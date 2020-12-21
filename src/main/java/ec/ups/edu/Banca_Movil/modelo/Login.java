@@ -33,6 +33,7 @@ public class Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     
@@ -48,7 +49,19 @@ public class Login implements Serializable {
     @ManyToOne(optional = false)
     private Cliente cliente;
 
+    public Login() {
+    }
 
+    public Login(Integer id) {
+        this.id = id;
+    }
+
+    public Login(Integer id, Date fecha, boolean acceso) {
+        this.id = id;
+        this.fecha = fecha;
+        this.acceso = acceso;
+       
+    }
     public Integer getId() {
         return id;
     }
@@ -80,7 +93,7 @@ public class Login implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+ 
 
     @Override
     public String toString() {
