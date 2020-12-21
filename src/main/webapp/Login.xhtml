@@ -9,12 +9,15 @@
 
 <body>
 	
-	<img src="imgLogin/logoP.png" width="250" height="200" align="middle"/>
-	
-	<h1>INGRESE AL SISTEMA</h1>
+		<div style="margin-left: 10%; background: #FDFEFE; width: 420px; heigth: 120%; margin-top: 2%; border: 2px #1C2833 solid">
+		<img src="imgLogin/logoP.png" width="250" height="200" style="margin-left: 20%"/>
+		
+		<div style="margin-left: 3%; margin-top: 5%;">
+	<h1 style="margin-left: 7%">INGRESE AL SISTEMA</h1>
 
 	<h:form>
-		
+	
+	
 		
 		<h:panelGrid columns="2">
 			<h:outputLabel for="txtUsuario" value="Usuario" />
@@ -26,9 +29,11 @@
 				value="#{loginBean.empleado.contracenia}" required="True" />
 			<h:message for="txtContrasena" />
 			<h:outputLabel value="" />
-			<h:commandButton action="#{loginBean.logeo()}" value="Acceder"/>
+			<h:commandButton action="#{loginBean.logeo()}" value="Acceder" />
 	
 		</h:panelGrid>
 	</h:form>
+	</div>
+	</div>
 </body>
 </html>
