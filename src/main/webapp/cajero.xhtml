@@ -10,12 +10,111 @@
 <body style="background: #FDFEFE;">
 	<p:tabView>
 		<p:tab title="CUENTA">
-			<h:panelGrid columns="2" cellpadding="10">
-				<div style="width: 600px">
-					<h2 style="margin-left: 25%; margin-top: 3%;">CREAR CLIENTE</h2>
-				</div>
-				
-				
+			<h:panelGrid columns="1">
+				<h2>CREAR CUENTA</h2>
+			</h:panelGrid>
+			<h:panelGrid columns="2" cellpadding="10"
+				style="width:200px; background:#A9CCE3;">
+				<h:form>
+		  				tipoCuenta:tipo_cuenta
+						<h:selectOneMenu id="tipoCuenta"
+						value="#{aperturaCuentaBEAN.tipoCuenta}">
+						<f:selectItem itemLabel="cuenta corriente"
+							itemValue="cuenta corriente" />
+						<f:selectItem itemLabel="cuenta de ahorros"
+							itemValue="cuenta de ahorros" />
+					</h:selectOneMenu>
+					<br />
+					<br />
+							numerocuenta:
+							<h:outputLabel value="#{aperturaCuentaBEAN.doAleatorio()}" />
+					<br />
+					<br />
+							saldo:
+							<h:inputText value="#{aperturaCuentaBEAN.saldo}" />
+					<br />
+					
+	    					cedula:
+	    					<h:inputText value="#{aperturaCuentaBEAN.cedula}" />
+					<br />
+					
+   							nombres:
+   							<h:inputText value="#{aperturaCuentaBEAN.nombres}" />
+					<br />
+					     
+    						apellido:
+    						<h:inputText value="#{aperturaCuentaBEAN.apellido}" />
+					<br />
+					
+    						direccion:
+    						<h:inputText value="#{aperturaCuentaBEAN.direccion}" />
+					<br />
+					
+							correo:
+    						<h:inputText value="#{aperturaCuentaBEAN.correo}" />
+					<br />
+					
+   							telefono:
+   							<h:inputText value="#{aperturaCuentaBEAN.telefono}" />
+					<br />
+					
+    						celular:
+   							<h:inputText value="#{aperturaCuentaBEAN.celular}" />
+
+					<br />
+					<br />
+					<h:commandButton value="GUARDAR"
+						action="#{aperturaCuentaBEAN.doAleatorio()}" />
+
+					<br />
+					<br />
+				</h:form>
+
+
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:dataTable value="#{aperturaCuentaBEAN.listaCuentas()}"
+						var="cuenta" border="4" style="width: 900px;">
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="ITEM" />
+							</f:facet>
+							<h:outputLabel value="#{cuenta.id}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="TIPO" />
+							</f:facet>
+							<h:outputLabel value="#{cuenta.tipoCuenta}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="NUMERO CUENTA" />
+							</f:facet>
+							<h:outputLabel value="#{cuenta.numerocuenta}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="NOMBRES" />
+							</f:facet>
+							<h:outputLabel value="#{cuenta.nombres}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="APELLIDOS" />
+							</f:facet>
+							<h:outputLabel value="#{cuenta.apellido}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="SALDO" />
+							</f:facet>
+							<h:outputLabel value="#{cuenta.saldo}" />
+						</h:column>
+					</h:dataTable>
+				</h:panelGrid>
+
+
+
 			</h:panelGrid>
 		</p:tab>
 		<p:tab title="TRANSACCIONES">

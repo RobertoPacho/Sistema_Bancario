@@ -58,14 +58,10 @@ public class EmpleadoON {
      *
      * @param cedula
      * @return
+     * @throws Exception 
      */
-    public Empleado buscarEmpleadoCedula(String cedula) {
-        try {
+    public Empleado buscarEmpleadoCedula(String cedula) throws Exception {
             return empleadoDAO.findByCedula(cedula);
-        } catch (Exception ex) {
-            Logger.getLogger(EmpleadoON.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     /**

@@ -118,13 +118,7 @@ public class EmpleadoDAO {
 	 * @return
 	 */
 	public Empleado findByCedula(String cedula) throws Exception {
-		try {
-			Query q = em.createNamedQuery("Empleado.findByCedula");
-			q.setParameter("cedula", cedula);
-			return (Empleado) q.getSingleResult();
-		} catch (Exception e) {
-			throw new Exception("Erro buscar por  cedula");
-		}
+		return em.find(Empleado.class, cedula);
 
 	}
 
