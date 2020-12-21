@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.ups.edu.Banca_Movil.modelo.Empleado;
+import ec.ups.edu.Banca_Movil.on.CorreoON;
 import ec.ups.edu.Banca_Movil.on.EmpleadoON;
 
 @Named
@@ -20,6 +21,9 @@ public class EmpleadoBEAN {
 	
 	@Inject
 	private Empleado empleado;
+	
+	@Inject
+	private CorreoON correoON;
 	
 	private Integer id;
     private String cedula;   
@@ -107,9 +111,10 @@ public class EmpleadoBEAN {
     	empleado.setDireccion(direccion);
     	empleado.setCorreo(correo);
     	empleado.setContracenia(contracenia);
-    	empleado.setRol("Administrador");
+    	empleado.setRol(rol);
     	empleadoON.insertar(empleado);
     	System.out.println("guardado ojala");
+    	correoON.enviarConGMail(correo, "prueba de envio", "hola que mas como vas");
     	return null;
     	
     }
