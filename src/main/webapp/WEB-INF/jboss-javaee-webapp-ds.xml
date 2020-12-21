@@ -28,8 +28,8 @@
       	<connection-url>jdbc:postgresql://localhost:5432/bancamovil</connection-url>
         <driver>postgresql-driver</driver>
         <security>
-            <user-name>postgres</user-name>
-            <password>patito.123</password>
+            <user-name>bancomovil</user-name>
+            <password>bancomovil</password>
         </security>
     </datasource>
 </datasources>
