@@ -1,2 +1,2 @@
-# Sistema_Bancario
- proyecto Proyectos Software App Distribuidas
+# Banca_Movil
+ proyecto Proyectos Software App distribuidas
