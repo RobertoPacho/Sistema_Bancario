@@ -24,7 +24,7 @@
     <!-- The datasource is bound into JNDI at this location. We reference 
         this in META-INF/persistence.xml -->
     <datasource jndi-name="java:jboss/datasources/BancaMovilDS" 
-    	pool-name="parqueaderoDS" enabled="true" use-java-context="true" >
+    	pool-name="BancaMovilDS" enabled="true" use-java-context="true" >
       	<connection-url>jdbc:postgresql://localhost:5432/bancamovil</connection-url>
         <driver>postgresql-driver</driver>
         <security>

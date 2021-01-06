@@ -19,6 +19,10 @@ public class CuentaON {
 		cuentaDAO.insert(cuenta);
 		return true;
 	}
+	
+	public Cuenta buscarCedula(String cedula) throws Exception{
+		return cuentaDAO.buscarCedula(cedula);
+	}
 
 	public List<Cuenta> listaCuentas() throws Exception {
 		return cuentaDAO.findAll();

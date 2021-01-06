@@ -15,61 +15,65 @@
 			</h:panelGrid>
 			<h:panelGrid columns="2" cellpadding="10"
 				style="width:200px; background:#A9CCE3;">
-				<h:form>
+				<h:form id="datos">
+					<p:panel id="panel" style="margin-bottom:10px;">
 		  				tipoCuenta:
 						<h:selectOneMenu id="tipoCuenta"
-						value="#{aperturaCuentaBEAN.tipoCuenta}">
-						<f:selectItem itemLabel="cuenta corriente"
-							itemValue="cuenta corriente" />
-						<f:selectItem itemLabel="cuenta de ahorros"
-							itemValue="cuenta de ahorros" />
-					</h:selectOneMenu>
-					<br />
-					<br />
+							value="#{aperturaCuentaBEAN.tipoCuenta}">
+							<f:selectItem itemLabel="cuenta corriente"
+								itemValue="cuenta corriente" />
+							<f:selectItem itemLabel="cuenta de ahorros"
+								itemValue="cuenta de ahorros" />
+						</h:selectOneMenu>
+						<br />
+						<br />
 							numerocuenta:
 							<h:outputLabel value="#{aperturaCuentaBEAN.doAleatorio()}" />
-					<br />
-					<br />
+						<br />
+						<br />
 							saldo:
 							<h:inputText value="#{aperturaCuentaBEAN.saldo}" />
-					<br />
+						<br />
 					
 	    					cedula:
 	    					<h:inputText value="#{aperturaCuentaBEAN.cedula}" />
-					<br />
+						<br />
 					
    							nombres:
    							<h:inputText value="#{aperturaCuentaBEAN.nombres}" />
-					<br />
+						<br />
 					     
     						apellido:
     						<h:inputText value="#{aperturaCuentaBEAN.apellido}" />
-					<br />
+						<br />
 					
     						direccion:
     						<h:inputText value="#{aperturaCuentaBEAN.direccion}" />
-					<br />
+						<br />
 					
 							correo:
     						<h:inputText value="#{aperturaCuentaBEAN.correo}" />
-					<br />
+						<br />
 					
    							telefono:
    							<h:inputText value="#{aperturaCuentaBEAN.telefono}" />
-					<br />
+						<br />
 					
     						celular:
    							<h:inputText value="#{aperturaCuentaBEAN.celular}" />
 
-					<br />
-					<br />
-					<h:commandButton value="GUARDAR"
-						action="#{aperturaCuentaBEAN.doAgregarCuenta()}" />
+						<br />
+						<br />
+						<h:commandButton value="Guardar"
+							action="#{aperturaCuentaBEAN.doAgregarCuenta()}" />
 
-					<br />
-					<br />
+						<h:commandButton value="Cancelar" update="panel" process="@this"
+							action="#{aperturaCuentaBEAN.reset()}" style="margin-right:20px;" />
+
+						<br />
+						<br />
+					</p:panel>
 				</h:form>
-
 
 				<h:panelGrid columns="2" cellpadding="10">
 					<h:dataTable value="#{aperturaCuentaBEAN.listaCuentas()}"
@@ -113,14 +117,29 @@
 					</h:dataTable>
 				</h:panelGrid>
 
-
-
 			</h:panelGrid>
+
 		</p:tab>
 		<p:tab title="TRANSACCIONES">
 			<h:panelGrid columns="1">
 				<h2>COOPERATIVA E.S.E</h2>
 			</h:panelGrid>
+			<h:form>
+				<h:panelGrid columns="3" cellpadding="5">
+					<h:outputText value="Cedula: " />
+					<p:inputText id="cedula" value="#{aperturaCuentaBEAN.cedula}">
+						<p:ajax event="keyup" update="out1" />
+					</p:inputText>
+					<br/>
+					<br/>
+					<h:outputText value="Cliente: " />
+					<h:outputText id="out1" value="#{aperturaCuentaBEAN.buscarcedula()}" style="border: #000000 1px solid;"/>
+					<br/>
+					<br/>
+					<h:outputText value="#Cuenta: " />
+					<h:outputText value="#{aperturaCuentaBEAN.numerocuenta}" style="border: #000000 1px solid;"/>
+				</h:panelGrid>
+			</h:form>
 
 		</p:tab>
 	</p:tabView>
