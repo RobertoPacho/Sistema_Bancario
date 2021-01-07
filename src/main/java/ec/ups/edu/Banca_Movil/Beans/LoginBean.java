@@ -9,7 +9,6 @@ import javax.faces.view.facelets.FaceletContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional.TxType;
 
 import ec.ups.edu.Banca_Movil.modelo.Empleado;
 import ec.ups.edu.Banca_Movil.on.ALoginON;
@@ -28,9 +27,17 @@ public class LoginBean {
 	@Inject
 	private EmpleadoON empleadoON;
 
-	private String txtcedula;
 	private String cedula;
 	private String contrasena;
+	private String rol;
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 
 	public LoginBean() {
 		init();
@@ -48,14 +55,13 @@ public class LoginBean {
 		this.empleado = empleado;
 	}
 
-	public Empleado empleadob(String cedula) throws Exception {
+	public Empleado empleadob(String cedula, String rol) throws Exception {
 		List<Empleado> listaemp = empleadoON.listaEmpleados();
 		for (int i = 0; i < listaemp.size(); i++) {
 			if (listaemp.get(i).getCedula() == cedula) {
 				empleado.setCedula(listaemp.get(i).getCedula());
 				empleado.setContracenia(listaemp.get(i).getContracenia());
-				empleado.setRol(listaemp.get(i).getRol());
-
+				
 				return empleado;
 			}
 		}
@@ -64,34 +70,22 @@ public class LoginBean {
 	}
 
 	public String logeo() throws Exception {
-		System.out.println(txtcedula);
-		empleado = empleadob(cedula);
+
 		if (empleado.getCedula().equals(empleado.getCedula())
 				&& empleado.getContracenia().equals(empleado.getContracenia())) {
-
+			
+	
 			return "empleado";
-
-		} else {
+		}
+		else {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "correo o clave incorrecta",
 					"correo o clave incorrecto");
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			return null;
 		}
-		
+
 		
 	}
+	
+
 }
-/*
- * public String logeo(String cedula, String contrasena) {
- * if(empleado.getCedula().equals("0103662805")&&
- * empleado.getContracenia().equals("12345")) {
- * if(empleado.getRol().equals("Administrador")) { return "empleado"; }
- * if(empleado.getCedula().equals("0103662845")&&
- * empleado.getContracenia().equals("12345")) {
- * if(empleado.getRol().equals("Cajero")) { return "Cajero"; } } } else{
- * FacesMessage msg=new
- * FacesMessage(FacesMessage.SEVERITY_INFO,"correo o clave incorrecta"
- * ,"correo o clave incorrecto");
- * FacesContext.getCurrentInstance().addMessage(null, msg); return null; }
- * return "empleado"; }
- */
