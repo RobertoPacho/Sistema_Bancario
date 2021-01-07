@@ -245,7 +245,7 @@ public class AperturaCuentaBEAN {
 		cuenta = cuentaON.buscarCedula(cedula);
 		nombres = cuenta.getNombres() + " " + cuenta.getApellido();
 		System.out.println(nombres.length());
-		if (cedula.length()==10) {
+		if (nombres.length()==10) {
 			numerocuenta=40;
 			//numerocuenta = Integer.valueOf(cuenta.getNumerocuenta());
 		return nombres;
