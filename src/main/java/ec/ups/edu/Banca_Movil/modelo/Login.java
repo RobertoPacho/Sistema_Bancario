@@ -45,9 +45,7 @@ public class Login implements Serializable {
     @Column(name = "acceso")
     private boolean acceso;
     
-    @JoinColumn(name = "Cliente", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Cliente cliente;
+    
 
     public Login() {
     }
@@ -86,13 +84,7 @@ public class Login implements Serializable {
         this.acceso = acceso;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    
  
 
     @Override

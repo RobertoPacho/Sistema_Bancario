@@ -3,6 +3,7 @@ package ec.ups.edu.Banca_Movil.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,6 +16,9 @@ public class CuentaDAO {
 
 	@PersistenceContext(name = "BancaMovilPersistenceUnit")
 	private EntityManager em;
+	
+	@Inject
+	Cuenta cuenta;
 
 	public CuentaDAO() {
 	}
@@ -53,6 +57,7 @@ public class CuentaDAO {
 		em.remove(read(id));
 	}
 
+	
 	/**
 	 * Actualiza el metodo mediante el objeto de Alogin
 	 * 
@@ -73,6 +78,32 @@ public class CuentaDAO {
 
 	public Cuenta read(int id) throws Exception {
 		return em.find(Cuenta.class, id);
+	}
+	
+	/**
+	 * buscamos mediante la cedula
+	 * 
+	 * @param id
+	 * @find
+	 */
+
+	public Cuenta buscarCedula(String cedula) throws Exception {
+		String jpql = "Select c from Cuenta c";
+		Query q = em.createQuery(jpql, Cuenta.class);
+		List<Cuenta> lista = q.getResultList();	
+		for(int i=0; i < lista.size(); i++) {
+			if(lista.get(i).getCedula().equals(cedula)) {
+				cuenta.setId(lista.get(i).getId());
+				cuenta.setCedula(lista.get(i).getCedula());
+				cuenta.setNombres(lista.get(i).getNombres());
+				cuenta.setApellido(lista.get(i).getApellido());
+				cuenta.setCorreo(lista.get(i).getCorreo());
+				cuenta.setDireccion(lista.get(i).getDireccion());
+				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
+				return cuenta;
+			}
+		}
+		return cuenta;
 	}
 
 	/**
