@@ -243,15 +243,13 @@ public class AperturaCuentaBEAN {
 
 	public String buscarcedula() throws Exception {
 		cuenta = cuentaON.buscarCedula(cedula);
-		nombres=" ";
-		if (c>1) {
-			c++;
-			System.out.println(c);
-			nombres = cuenta.getNombres() + " " + cuenta.getApellido();
-			numerocuenta=10;
+		nombres = cuenta.getNombres() + " " + cuenta.getApellido();
+		System.out.println(nombres.length());
+		if (cedula.length()==10) {
+			numerocuenta=40;
 			//numerocuenta = Integer.valueOf(cuenta.getNumerocuenta());
 		return nombres;
-		}
+		}else {c++;}
 	return nombres;
 	}
 

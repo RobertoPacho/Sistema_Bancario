@@ -125,19 +125,23 @@
 				<h2>COOPERATIVA E.S.E</h2>
 			</h:panelGrid>
 			<h:form>
+				<h:outputText value="Buscar Cedula: " />
+				<br />
+				<p:inputText id="cedula" value="#{aperturaCuentaBEAN.cedula}">
+					<p:ajax event="keyup" update="out1" />
+				</p:inputText>
+				<br />
+				<br />
 				<h:panelGrid columns="3" cellpadding="5">
-					<h:outputText value="Cedula: " />
-					<p:inputText id="cedula" value="#{aperturaCuentaBEAN.cedula}">
-						<p:ajax event="keyup" update="out1" />
-					</p:inputText>
-					<br/>
-					<br/>
 					<h:outputText value="Cliente: " />
-					<h:outputText id="out1" value="#{aperturaCuentaBEAN.buscarcedula()}" style="border: #000000 1px solid;"/>
-					<br/>
-					<br/>
+					<h:outputText id="out1"
+						value="#{aperturaCuentaBEAN.buscarcedula()}"
+						style="border: #000000 1px solid;" />
+					<br />
+					<br />
 					<h:outputText value="#Cuenta: " />
-					<h:outputText value="#{aperturaCuentaBEAN.numerocuenta}" style="border: #000000 1px solid;"/>
+					<h:outputText value="#{aperturaCuentaBEAN.numerocuenta}"
+						style="border: #000000 1px solid;" />
 				</h:panelGrid>
 			</h:form>
 
