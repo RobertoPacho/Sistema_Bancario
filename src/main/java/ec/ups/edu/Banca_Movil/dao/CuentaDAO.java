@@ -1,5 +1,6 @@
 package ec.ups.edu.Banca_Movil.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -19,6 +20,9 @@ public class CuentaDAO {
 	
 	@Inject
 	Cuenta cuenta;
+	
+	@Inject
+	Connection conexion;
 
 	public CuentaDAO() {
 	}
@@ -65,8 +69,9 @@ public class CuentaDAO {
 	 * @merge
 	 */
 
-	public void update(Cuenta cuenta) throws Exception {
+	public boolean update(Cuenta cuenta) throws Exception {
 		em.merge(cuenta);
+		return true;
 	}
 
 	/**
@@ -100,6 +105,7 @@ public class CuentaDAO {
 				cuenta.setCorreo(lista.get(i).getCorreo());
 				cuenta.setDireccion(lista.get(i).getDireccion());
 				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
+				cuenta.setTipoCuenta(lista.get(i).getTipoCuenta());
 				return cuenta;
 			}
 		}
@@ -117,7 +123,30 @@ public class CuentaDAO {
 		Query q = em.createQuery(jpql, Cuenta.class);
 		return (List<Cuenta>) q.getResultList();
 	}
+	
+	/**
+	 * El metodo lista todos los cuentas por su codigo
+	 * 
+	 * @param codigo
+	 * @createNamedQuery crea un querry para poder listar
+	 * @return
+	 */
 
+	public List<Cuenta> listacuentasCliente(String cedula) throws Exception {
+
+		try {
+			Query q = em.createQuery("SELECT c FROM Cuenta c WHERE c.cedula=:cedula");
+			q.setParameter("cedula",cedula);
+			List<Cuenta> lista = q.getResultList();
+			return lista;
+		} catch (Exception e) {
+			throw new Exception("Erro listar Cuenta " + e.getMessage());
+		}
+
+	}
+	
+	
+	
 	/**
 	 * El metodo lista todos los cuentas por su codigo
 	 * 
