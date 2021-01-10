@@ -20,10 +20,18 @@ public class CuentaON {
 		return true;
 	}
 	
+	public boolean actualizar(Cuenta cuenta) throws Exception {
+		return cuentaDAO.update(cuenta);
+	}
+	
 	public Cuenta buscarCedula(String cedula) throws Exception{
 		return cuentaDAO.buscarCedula(cedula);
 	}
 
+	public List<Cuenta> listacuentasCliente2(String cedula) throws Exception {
+		return cuentaDAO.listacuentasCliente(cedula);
+	}
+	
 	public List<Cuenta> listaCuentas() throws Exception {
 		return cuentaDAO.findAll();
 	}
