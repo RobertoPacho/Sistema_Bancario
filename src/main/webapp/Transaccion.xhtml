@@ -13,7 +13,7 @@
 	<h:panelGrid columns="1">
 		<h2>COOPERATIVA E.S.E</h2>
 	</h:panelGrid>
-	<h:form style="width:600px; background:#A9CCE3;">
+	<h:form id="trans" style="width:600px; background:#A9CCE3;">
 		<h:outputText value="Buscar Cedula: " />
 		<br />
 		<p:inputText id="cedula" value="#{transaccionesBEAN.cedula}">
@@ -42,9 +42,8 @@
         		</p:selectBooleanCheckbox>
         	
     		</h:panelGrid>
-			<h:commandButton value="CONTINUAR" action="#{transaccionesBEAN.retiro()}" >
-				<p:ajax update="msg" listener="#{transaccionesBEAN.addMessage}" />
-			</h:commandButton>
+			<h:commandButton value="CONTINUAR" action="#{transaccionesBEAN.retiro()}"/>
+			
 		</h:panelGrid>
 	</h:form>
 </body>

@@ -20,9 +20,6 @@ public class CuentaDAO {
 	
 	@Inject
 	Cuenta cuenta;
-	
-	@Inject
-	Connection conexion;
 
 	public CuentaDAO() {
 	}
@@ -99,13 +96,19 @@ public class CuentaDAO {
 		for(int i=0; i < lista.size(); i++) {
 			if(lista.get(i).getCedula().equals(cedula)) {
 				cuenta.setId(lista.get(i).getId());
+				cuenta.setTipoCuenta(lista.get(i).getTipoCuenta());
+				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
+				cuenta.setSaldo(lista.get(i).getSaldo());
 				cuenta.setCedula(lista.get(i).getCedula());
 				cuenta.setNombres(lista.get(i).getNombres());
 				cuenta.setApellido(lista.get(i).getApellido());
-				cuenta.setCorreo(lista.get(i).getCorreo());
 				cuenta.setDireccion(lista.get(i).getDireccion());
-				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
-				cuenta.setTipoCuenta(lista.get(i).getTipoCuenta());
+				cuenta.setCorreo(lista.get(i).getCorreo());
+				cuenta.setTelefono(lista.get(i).getTelefono());
+				cuenta.setCelular(lista.get(i).getCedula());
+				cuenta.setContrasena(lista.get(i).getContrasena());
+				cuenta.setFechaapertura(lista.get(i).getFechaapertura());
+				cuenta.setEmpleado(lista.get(i).getEmpleado());
 				return cuenta;
 			}
 		}

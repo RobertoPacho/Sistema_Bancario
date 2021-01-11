@@ -165,8 +165,9 @@ public class TransaccionesBEAN {
 						cuenta.setEmpleado(listaC.get(i).getEmpleado());
 						
 						cuentaON.actualizar(cuenta);
-						reset();
+						
 						System.out.println("Actualzado ");
+						reset();
 					}
 				}
 			}
@@ -175,7 +176,7 @@ public class TransaccionesBEAN {
 	}
 
 	public void reset() throws Exception {
-		this.cedula = " ";
+		cedula = " ";
 		nombres = " ";
 		monto = 0.0;
 		numerocuenta = "";
