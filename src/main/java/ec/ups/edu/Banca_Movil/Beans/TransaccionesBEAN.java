@@ -133,7 +133,7 @@ public class TransaccionesBEAN {
 							cuenta.setEmpleado(listaC.get(i).getEmpleado());
 							
 							cuentaON.actualizar(cuenta);
-							//reset();
+							reset();
 							System.out.println("Actualzado ");
 						} else {
 							System.out.println("Saldo insuficiente ");
@@ -167,7 +167,7 @@ public class TransaccionesBEAN {
 						cuentaON.actualizar(cuenta);
 						
 						System.out.println("Actualzado ");
-						//reset();
+						reset();
 					}
 				}
 			}
