@@ -52,7 +52,7 @@ public class TasaInteresDAO {
 	}
 
 	public List<TasaInteres> findAll() throws Exception {
-		String jpql = "Select t from TasaInteres t";
+		String jpql = "Select t from TasaInteres t ORDER BY id ASC";
 		Query q = em.createQuery(jpql, TasaInteres.class);
 		return (List<TasaInteres>) q.getResultList();
 	}
