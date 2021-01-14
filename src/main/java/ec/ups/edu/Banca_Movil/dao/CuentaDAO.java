@@ -1,15 +1,15 @@
 package ec.ups.edu.Banca_Movil.dao;
 
-import java.util.List;
 
+
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import ec.ups.edu.Banca_Movil.modelo.Cuenta;
-import ec.ups.edu.Banca_Movil.modelo.Empleado;
+
 
 @Stateless
 public class CuentaDAO {
@@ -65,8 +65,9 @@ public class CuentaDAO {
 	 * @merge
 	 */
 
-	public void update(Cuenta cuenta) throws Exception {
+	public boolean update(Cuenta cuenta) throws Exception {
 		em.merge(cuenta);
+		return true;
 	}
 
 	/**
@@ -94,12 +95,18 @@ public class CuentaDAO {
 		for(int i=0; i < lista.size(); i++) {
 			if(lista.get(i).getCedula().equals(cedula)) {
 				cuenta.setId(lista.get(i).getId());
+				cuenta.setTipoCuenta(lista.get(i).getTipoCuenta());
+				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
 				cuenta.setCedula(lista.get(i).getCedula());
 				cuenta.setNombres(lista.get(i).getNombres());
 				cuenta.setApellido(lista.get(i).getApellido());
-				cuenta.setCorreo(lista.get(i).getCorreo());
 				cuenta.setDireccion(lista.get(i).getDireccion());
-				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
+				cuenta.setCorreo(lista.get(i).getCorreo());
+				cuenta.setTelefono(lista.get(i).getTelefono());
+				cuenta.setCelular(lista.get(i).getCedula());
+				cuenta.setContrasena(lista.get(i).getContrasena());
+				cuenta.setFechaapertura(lista.get(i).getFechaapertura());
+				cuenta.setEmpleado(lista.get(i).getEmpleado());
 				return cuenta;
 			}
 		}
@@ -117,7 +124,30 @@ public class CuentaDAO {
 		Query q = em.createQuery(jpql, Cuenta.class);
 		return (List<Cuenta>) q.getResultList();
 	}
+	
+	/**
+	 * El metodo lista todos los cuentas por su codigo
+	 * 
+	 * @param codigo
+	 * @createNamedQuery crea un querry para poder listar
+	 * @return
+	 */
 
+	public List<Cuenta> listacuentasCliente(String cedula) throws Exception {
+
+		try {
+			Query q = em.createQuery("SELECT c FROM Cuenta c WHERE c.cedula=:cedula");
+			q.setParameter("cedula",cedula);
+			List<Cuenta> lista = q.getResultList();
+			return lista;
+		} catch (Exception e) {
+			throw new Exception("Erro listar Cuenta " + e.getMessage());
+		}
+
+	}
+	
+	
+	
 	/**
 	 * El metodo lista todos los cuentas por su codigo
 	 * 

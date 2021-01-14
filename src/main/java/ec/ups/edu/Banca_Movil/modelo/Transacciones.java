@@ -28,19 +28,12 @@ import javax.persistence.TemporalType;
  * @author RobertoPacho
  */
 @Entity
-@Table(name = "Transaciones")
-@NamedQueries({
-    @NamedQuery(name = "Transaciones.findAll", query = "SELECT t FROM Transaciones t"),
-    @NamedQuery(name = "Transaciones.findById", query = "SELECT t FROM Transaciones t WHERE t.id = :id"),
-    @NamedQuery(name = "Transaciones.findByTipo", query = "SELECT t FROM Transaciones t WHERE t.tipo = :tipo"),
-    @NamedQuery(name = "Transaciones.findByCantidad", query = "SELECT t FROM Transaciones t WHERE t.cantidad = :cantidad"),
-    @NamedQuery(name = "Transaciones.findByFecha", query = "SELECT t FROM Transaciones t WHERE t.fecha = :fecha")})
-public class Transaciones implements Serializable {
+@Table(name = "Transacciones")
+public class Transacciones implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     
@@ -48,18 +41,18 @@ public class Transaciones implements Serializable {
     private String tipo;
     
     @Column(name = "cantidad")
-    private String cantidad;
+    private double cantidad;
+    
     @Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
     private Date fecha;
-    @JoinColumn(name = "Cuenta_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Cuenta cuentaid;
+  
+    @ManyToOne
+    private Cuenta cuenta;
 
-    public Transaciones() {
+    public Transacciones() {
     }
 
-    public Transaciones(Integer id) {
+    public Transacciones(Integer id) {
         this.id = id;
     }
 
@@ -78,16 +71,16 @@ public class Transaciones implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+   
+    public double getCantidad() {
+		return cantidad;
+	}
 
-    public String getCantidad() {
-        return cantidad;
-    }
+	public void setCantidad(double cantidad) {
+		this.cantidad = cantidad;
+	}
 
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Date getFecha() {
+	public Date getFecha() {
         return fecha;
     }
 
@@ -95,15 +88,16 @@ public class Transaciones implements Serializable {
         this.fecha = fecha;
     }
 
-    public Cuenta getCuentaid() {
-        return cuentaid;
-    }
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
 
-    public void setCuentaid(Cuenta cuentaid) {
-        this.cuentaid = cuentaid;
-    }
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
 
-    @Override
+	
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -113,19 +107,20 @@ public class Transaciones implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Transaciones)) {
+        if (!(object instanceof Transacciones)) {
             return false;
         }
-        Transaciones other = (Transaciones) object;
+        Transacciones other = (Transacciones) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "ec.edu.ups.banca_movil.modelo.Transaciones[ id=" + id + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Transacciones [id=" + id + ", tipo=" + tipo + ", cantidad=" + cantidad + ", fecha=" + fecha
+				+ ", cuenta=" + cuenta + "]";
+	}
     
 }
