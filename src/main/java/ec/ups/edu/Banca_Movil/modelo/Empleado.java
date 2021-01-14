@@ -11,11 +11,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+//import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author RobertoPacho
  */
 @Entity
+@XmlRootElement(name="empleado")
+
 @Table(name = "Empleado")
 public class Empleado implements Serializable {
 
