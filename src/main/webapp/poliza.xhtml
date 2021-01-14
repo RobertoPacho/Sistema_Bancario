@@ -48,22 +48,19 @@
 		<div style="margin-left: 40%; margin-top: -15%">
 			Tasa de Interes
 			<h:panelGrid columns="2" cellpadding="10">
-				<h:dataTable value="#{polizaBEAN.tasaInteres()}" var="tasa"
-					border="4" style="width: 120px;">
+				<h:dataTable value="#{polizaBEAN.listaInteresesBean()}" var="tasaInteres"
+					border="4" style="width: 400px;">
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Tiempo" />
 						</f:facet>
-						<h:outputLabel value="#{tasa.toString()}" />
+						<h:outputLabel value="#{tasaInteres.tiempo}" />
 					</h:column>
-				</h:dataTable>
-				<h:dataTable value="#{polizaBEAN.tasai()}" var="tasai" border="4"
-					style="width: 200px; margin-left:-25px;">
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Tasa de Interes" />
 						</f:facet>
-						<h:outputLabel value="#{tasai.toString()}" />
+						<h:outputLabel value="#{tasaInteres.tasa}%" />
 					</h:column>
 				</h:dataTable>
 			</h:panelGrid>

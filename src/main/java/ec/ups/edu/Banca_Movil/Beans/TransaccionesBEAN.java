@@ -39,6 +39,14 @@ public class TransaccionesBEAN {
 
 	private boolean check1;
 	private boolean check2;
+	
+	private boolean tasa1;
+	private boolean tasa2;
+	private boolean tasa3;
+	private boolean tasa4;
+	private boolean tasa5;
+	private boolean tasa6;
+	
 
 	public CuentaON getCuentaON() {
 		return cuentaON;

@@ -1,16 +1,19 @@
 package ec.ups.edu.Banca_Movil.Beans;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import ec.ups.edu.Banca_Movil.modelo.Cuenta;
+import ec.ups.edu.Banca_Movil.modelo.TasaInteres;
+import ec.ups.edu.Banca_Movil.on.TasaInteresON;
 
 @Named
 @RequestScoped
 public class PolizaBEAN {
+	
 	private int id;
     private double monto;
     private Date fechaInicio;
@@ -23,6 +26,12 @@ public class PolizaBEAN {
     private String tasa="%";
     private int plazo;
     
+    @Inject
+    TasaInteresON tasaInteresON;
+    
+    @Inject
+    TasaInteres tasaInteres;
+   
 	public int getId() {
 		return id;
 	}
@@ -68,6 +77,7 @@ public class PolizaBEAN {
 	public String getTasa() {
 		return tasa;
 	}
+	
 	public void setTasa(String tasa) {
 		this.tasa = tasa;
 	}
@@ -77,36 +87,11 @@ public class PolizaBEAN {
 	public void setPlazo(int plazo) {
 		this.plazo = plazo;
 	}
-    
-	public List<String> tasaInteres() {
-		List<String> tasa = new ArrayList<String>();
-		tasa.add("30-59");
-		tasa.add("60-89");
-		tasa.add("90-179");
-		tasa.add("180-269");
-		tasa.add("270-359");
-		tasa.add("Mas de 350");
-		return tasa;
-	}
 	
-	public List<String> tasai() {
-		List<String> tasai = new ArrayList<String>();
-		tasai.add("5,50%");
-		tasai.add("5,75%");
-		tasai.add("6,25%");
-		tasai.add("7,00%");
-		tasai.add("7,50%");
-		tasai.add("8,50%");
-		return tasai;
-	}
+    public List<TasaInteres> listaInteresesBean() throws Exception{
+    	return tasaInteresON.listaTasaInteres();
+    }
 	
-	public String mostrarTasa() {
-		System.out.println(plazo);
-		if(plazo<=30) {
-			tasa=tasai().get(0).toString();
-		}
-		return tasa;
-	}
 	
 	
 	public String listo() {
