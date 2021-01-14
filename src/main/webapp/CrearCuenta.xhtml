@@ -31,10 +31,7 @@
 							<h:outputLabel value="#{aperturaCuentaBEAN.doAleatorio()}" />
 				<br />
 				<br />
-							saldo:
-							<h:inputText value="#{aperturaCuentaBEAN.saldo}" />
-				<br />
-					
+							
 	    					cedula:
 	    					<h:inputText value="#{aperturaCuentaBEAN.cedula}" />
 				<br />
@@ -107,12 +104,6 @@
 						<h:outputLabel value="APELLIDOS" />
 					</f:facet>
 					<h:outputLabel value="#{cuenta.apellido}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="SALDO" />
-					</f:facet>
-					<h:outputLabel value="#{cuenta.saldo}" />
 				</h:column>
 			</h:dataTable>
 		</h:panelGrid>

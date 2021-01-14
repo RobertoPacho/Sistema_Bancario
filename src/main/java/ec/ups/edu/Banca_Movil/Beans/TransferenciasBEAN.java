@@ -15,7 +15,7 @@ import ec.ups.edu.Banca_Movil.on.TransaccionesON;
 
 @Named
 @RequestScoped
-public class TransaccionesBEAN {
+public class TransferenciasBEAN {
 
 	@Inject
 	private CuentaON cuentaON;

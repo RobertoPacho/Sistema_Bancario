@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
 
@@ -25,18 +25,18 @@
 					<f:selectItem itemLabel="Años" itemValue="Años" />
 				</h:selectOneMenu>
 			
-			Plazo:height:100%;
-			<h:inputText value="#{polizaBEAN.plazo}" />
+			Plazo:
+			<p:inputText id="plazo" value="#{polizaBEAN.plazo}">
+				<p:ajax event="keyup" update="tasa" />
+			</p:inputText>
 			
 			Tasa
-			<h:inputText value="#{polizaBEAN.tasa}" />
+			<h:outputText id="tasa" value="#{polizaBEAN.mostrarTasa()}" style="border: #000000 1px solid;" />
 			</h:panelGrid>
 			
 			<br/>
-			<h:commandButton value="Simular"
-							action="#{aperturaCuentaBEAN.doAgregarCuenta()}" />
-			<h:commandButton value="Solicitar"
-							action="#{aperturaCuentaBEAN.doAgregarCuenta()}" />
+			<h:commandButton value="Simular" action="#{polizaBEAN.listo()}" />
+			<h:commandButton value="Solicitar" action="#{polizaBEAN.listo()}" />
 			<br/>
 			<br/>
 		</div>

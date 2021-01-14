@@ -100,7 +100,17 @@ public class PolizaBEAN {
 		return tasai;
 	}
 	
-	public List<String> simulador(){
+	public String mostrarTasa() {
+		System.out.println(plazo);
+		if(plazo<=30) {
+			tasa=tasai().get(0).toString();
+		}
+		return tasa;
+	}
+	
+	
+	public String listo() {
+		System.out.println("hooooliiiiii");
 		return null;
 	}
 	

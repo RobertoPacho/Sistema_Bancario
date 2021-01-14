@@ -199,7 +199,6 @@ public class AperturaCuentaBEAN {
 		cuenta.setId(idNext);
 		cuenta.setTipoCuenta(tipoCuenta);
 		cuenta.setNumerocuenta(String.valueOf(doAleatorio()));
-		cuenta.setSaldo(saldo);
 		cuenta.setCedula(cedula);
 		cuenta.setNombres(nombres);
 		cuenta.setApellido(apellido);
@@ -210,7 +209,7 @@ public class AperturaCuentaBEAN {
 		cuenta.setContrasena(clave);
 		cuenta.setFechaapertura(objDate);
 
-		cuenta.setEmpleado(1);
+		cuenta.setEmpleado(empleadoON.buscarid(1));
 
 		cuentaON.insertar(cuenta);
 
