@@ -1,16 +1,15 @@
 package ec.ups.edu.Banca_Movil.dao;
 
-import java.sql.Connection;
-import java.util.List;
 
+
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import ec.ups.edu.Banca_Movil.modelo.Cuenta;
-import ec.ups.edu.Banca_Movil.modelo.Empleado;
+
 
 @Stateless
 public class CuentaDAO {
@@ -98,7 +97,6 @@ public class CuentaDAO {
 				cuenta.setId(lista.get(i).getId());
 				cuenta.setTipoCuenta(lista.get(i).getTipoCuenta());
 				cuenta.setNumerocuenta(lista.get(i).getNumerocuenta());
-				cuenta.setSaldo(lista.get(i).getSaldo());
 				cuenta.setCedula(lista.get(i).getCedula());
 				cuenta.setNombres(lista.get(i).getNombres());
 				cuenta.setApellido(lista.get(i).getApellido());
