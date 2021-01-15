@@ -33,6 +33,7 @@ public class EmpleadoDAO {
 	 */
 	public boolean insert(Empleado empleado) throws Exception {
 		em.persist(empleado);
+		System.out.println("estamos aqui");
 		return true;
 	}
 
@@ -72,12 +73,7 @@ public class EmpleadoDAO {
 	 * @find
 	 */
 	public Empleado read(int id) throws Exception {
-		try {
-			System.out.println("Estamos aca");
 			return em.find(Empleado.class, id);
-		} catch (Exception e) {
-			throw new Exception("Erro leer Cliente " + e.getMessage());
-		}
 	}
 
 	/**

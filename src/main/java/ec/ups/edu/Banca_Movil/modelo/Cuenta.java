@@ -57,17 +57,15 @@ public class Cuenta implements Serializable {
     @Column(name = "nombres")
     private String nombres;
     @Column(name = "numerocuenta")
-    private String numerocuenta;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "saldo")
-    private Double saldo;
+    private String numerocuenta;  
     @Column(name = "telefono")
     private String telefono;
     @Column(name = "tipo_cuenta")
     private String tipoCuenta;
     
-    @Column(name = "empleado")
-    private int empleado;
+    
+    @ManyToOne
+    private Empleado empleado;
 
     public Cuenta() {
     }
@@ -148,13 +146,6 @@ public class Cuenta implements Serializable {
         this.numerocuenta = numerocuenta;
     }
 
-    public Double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
 
     public String getTelefono() {
         return telefono;
@@ -172,12 +163,11 @@ public class Cuenta implements Serializable {
         this.tipoCuenta = tipoCuenta;
     }
 
-
-    public int getEmpleado() {
+	public Empleado getEmpleado() {
 		return empleado;
 	}
 
-	public void setEmpleado(int empleado) {
+	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
 
@@ -215,9 +205,14 @@ public class Cuenta implements Serializable {
     
     
 
-    @Override
-    public String toString() {
-        return "ec.edu.ups.appdist.g1.parqueadero.modelo.Cuenta[ id=" + id + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Cuenta [id=" + id + ", apellido=" + apellido + ", cedula=" + cedula + ", celular=" + celular
+				+ ", contrasena=" + contrasena + ", direccion=" + direccion + ", correo=" + correo + ", fechaapertura="
+				+ fechaapertura + ", nombres=" + nombres + ", numerocuenta=" + numerocuenta + ", telefono=" + telefono
+				+ ", tipoCuenta=" + tipoCuenta + ", empleado=" + empleado + "]";
+	}
+
+    
     
 }

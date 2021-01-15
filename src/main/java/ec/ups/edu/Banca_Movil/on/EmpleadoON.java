@@ -64,6 +64,10 @@ public class EmpleadoON {
     public Empleado buscarEmpleadoCedula(String cedula) throws Exception {
             return empleadoDAO.findByCedula(cedula);
     }
+    
+    public Empleado buscarid(int id) throws Exception {
+    	return empleadoDAO.read(id);
+    }
 
     /**
      * Este metodo nos ayuda a buscar el empleado por id, para poder ser

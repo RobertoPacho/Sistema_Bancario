@@ -20,6 +20,10 @@ public class CuentaON {
 		return true;
 	}
 	
+	public Cuenta buscarid(int id) throws Exception {
+		return cuentaDAO.read(id);
+	}
+	
 	public boolean actualizar(Cuenta cuenta) throws Exception {
 		return cuentaDAO.update(cuenta);
 	}
