@@ -33,19 +33,21 @@ public class Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     
     @Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Basic(optional = false)
     
     @Column(name = "acceso")
     private boolean acceso;
     
+    @Column(name = "ip")
+    private String ip;
     
+    
+    @ManyToOne
+    private Empleado empleado;
 
     public Login() {
     }
@@ -82,12 +84,44 @@ public class Login implements Serializable {
 
     public void setAcceso(boolean acceso) {
         this.acceso = acceso;
-    }
-
-    
+    }  
  
+    /**
+	 * @return the ip
+	 */
+	public String getIp() {
+		return ip;
+	}
 
-    @Override
+	/**
+	 * @param ip the ip to set
+	 */
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the empleado
+	 */
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	/**
+	 * @param empleado the empleado to set
+	 */
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	@Override
     public String toString() {
         return "ec.edu.ups.banca_movil.modelo.Login[ id=" + id + " ]";
     }
