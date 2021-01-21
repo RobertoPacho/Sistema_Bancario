@@ -1,16 +1,14 @@
 package ec.ups.edu.Banca_Movil.Beans;
 
 import java.net.InetAddress;
+
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ec.ups.edu.Banca_Movil.modelo.Empleado;
@@ -21,8 +19,6 @@ import ec.ups.edu.Banca_Movil.on.EmpleadoON;
 @Named
 @RequestScoped
 public class LoginBean {
-	static private final Logger LOGGER = Logger.getLogger("mx.com.hash.checkip.CheckIP");
-
 	@Inject
 	private Empleado empleado;
 
@@ -165,12 +161,12 @@ public class LoginBean {
 	public String prueba() throws Exception {
 		empleado = empleadoON.buscarUsuario(usuario);
 		Date fecha = new Date();
-		acceso=false;
+		acceso = false;
 		if (empleado.getContracenia().equals(contrasena)) {
 			rol = empleado.getRol();
 			switch (rol) {
 			case "Administrador":
-				acceso=true;
+				acceso = true;
 				login.setId(idLogin());
 				login.setFecha(fecha);
 				login.setAcceso(acceso);
@@ -179,7 +175,7 @@ public class LoginBean {
 				aloginOn.insertar(login);
 				return "Administrador";
 			case "Cajero":
-				acceso=true;
+				acceso = true;
 				login.setId(idLogin());
 				login.setFecha(fecha);
 				login.setAcceso(acceso);
@@ -194,33 +190,7 @@ public class LoginBean {
 		return contrasena;
 	}
 
-	public Empleado empleadob(String cedula, String rol) throws Exception {
-		List<Empleado> listaemp = empleadoON.listaEmpleados();
-		for (int i = 0; i < listaemp.size(); i++) {
-			if (listaemp.get(i).getCedula() == cedula) {
-				empleado.setCedula(listaemp.get(i).getCedula());
-				empleado.setContracenia(listaemp.get(i).getContracenia());
-				return empleado;
-			}
-		}
-		return empleado;
-	}
-
-	public String logeo() throws Exception {
-
-		if (empleado.getCedula().equals(empleado.getCedula())
-				&& empleado.getContracenia().equals(empleado.getContracenia())) {
-			return "empleado";
-		} else {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "correo o clave incorrecta",
-					"correo o clave incorrecto");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			return null;
-		}
-	}
-
 	public String direccionip() throws SocketException {
-		// InetAddress ip = InetAddress.getLocalHost();
 		listaip = new ArrayList<String>();
 		Enumeration e = NetworkInterface.getNetworkInterfaces();
 		while (e.hasMoreElements()) {
