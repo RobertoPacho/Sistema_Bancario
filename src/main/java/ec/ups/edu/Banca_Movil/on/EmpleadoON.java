@@ -1,4 +1,5 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -51,6 +52,10 @@ public class EmpleadoON {
     public List<Empleado> listaEmpleados() throws Exception {
             return empleadoDAO.findAll();
     }
+    
+    public Empleado ultimoLog() {
+    	return empleadoDAO.ultimoLogin();
+    }
 
     /**
      * Este metodo nos ayuda a buscar el empleado por cedula, para poder ser
@@ -66,6 +71,10 @@ public class EmpleadoON {
     
     public Empleado buscarid(int id) throws Exception {
     	return empleadoDAO.read(id);
+    }
+    
+    public Empleado buscarUsuario(String usuario) {
+    	return empleadoDAO.buscarUser(usuario);
     }
 
     /**

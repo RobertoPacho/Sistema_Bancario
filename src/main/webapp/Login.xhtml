@@ -9,31 +9,28 @@
 
 <body>
 	
-		<div style="margin-left: 10%; background: #FDFEFE; width: 420px; heigth: 120%; margin-top: 2%; border: 2px #1C2833 solid">
+	<div style="margin-left: 10%; background: #FDFEFE; width: 420px; heigth: 120%; margin-top: 2%; border: 2px #1C2833 solid">
 		<img src="imgLogin/logoP.png" width="250" height="200" style="margin-left: 20%"/>
 		
-		<div style="margin-left: 3%; margin-top: 5%;">
-	<h1 style="margin-left: 7%">INGRESE AL SISTEMA</h1>
+		<div style="margin-left: 3%; margin-top: 5%; text-align: center;">
+			<h1 style="margin-left: 7%">INGRESE AL SISTEMA</h1>
 
-	<h:form>
-	
-	
-		
-		<h:panelGrid columns="2">
-			<h:outputLabel for="txtUsuario" value="Usuario" />
-			<h:inputText id="txtUsuario" value="#{loginBean.empleado.cedula}" />
-			<h:message for="txtUsuario" />
-			<br />
-			<h:outputLabel for="txtContrasena" value="contrasena" />
-			<h:inputSecret id="txtContrasena"
-				value="#{loginBean.empleado.contracenia}" required="True" />
-			<h:message for="txtContrasena" />
-			<h:outputLabel value="" />
-			<h:commandButton action="#{loginBean.logeo()}" value="Acceder" />
-	
-		</h:panelGrid>
-	</h:form>
-	</div>
+			<h:form>		
+				<h:panelGrid columns="3" style="text-align: center;">
+					<h:outputLabel for="txtUsuario" value="Usuario" />
+					<h:inputText id="txtUsuario" value="#{loginBean.usuario}" />
+					<h:message for="txtUsuario" />
+					
+					<h:outputLabel for="txtContrasena" value="Contraseña" />
+					<h:inputSecret id="txtContrasena" value="#{loginBean.contrasena}" required="True" />
+					<h:message for="txtContrasena" />
+				</h:panelGrid>
+				<br/>
+				<h:commandButton action="#{loginBean.prueba()}" value="Acceder" style="width:50%; background: #20cfb2;"/>
+				<br/>
+				<br/>
+			</h:form>
+		</div>
 	</div>
 </body>
 </html>

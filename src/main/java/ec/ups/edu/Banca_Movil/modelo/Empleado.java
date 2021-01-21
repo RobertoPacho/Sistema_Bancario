@@ -42,6 +42,9 @@ public class Empleado implements Serializable {
     @Column(name = "correo")
     private String correo;
     
+    @Column(name = "usuario")
+    private String usuario;
+    
     @Column(name = "contracenia")
     private String contracenia;
     
@@ -140,8 +143,15 @@ public class Empleado implements Serializable {
         this.rol = rol;
     }
 
+    public String getUsuario() {
+		return usuario;
+	}
 
-    @Override
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);

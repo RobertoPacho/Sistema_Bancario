@@ -3,9 +3,7 @@
  */
 package ec.ups.edu.Banca_Movil.Beans;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -196,12 +194,7 @@ public class TasaInteresBEAN {
 	}
 
 	public void addMessage() {
-		if (tasa1) {
-			String summary = tasa1 ? "Checked" : "Unchecked";
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-			tasaInteresON.updateTasa(1, 5.55);
-			System.out.println("Tasa nueva = " + etasa1);
-		}
+		System.out.println("modificadoooooooooooooooooooo");
 	}
 
 	public List<TasaInteres> listaInteresesBean() throws Exception {
