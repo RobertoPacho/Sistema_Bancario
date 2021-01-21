@@ -190,20 +190,5 @@ public class LoginBean {
 		return contrasena;
 	}
 
-	public String direccionip() throws SocketException {
-		listaip = new ArrayList<String>();
-		Enumeration e = NetworkInterface.getNetworkInterfaces();
-		while (e.hasMoreElements()) {
-			NetworkInterface n = (NetworkInterface) e.nextElement();
-			Enumeration ee = n.getInetAddresses();
-			while (ee.hasMoreElements()) {
-				InetAddress i = (InetAddress) ee.nextElement();
-				listaip.add(i.getHostName());
-				System.out.println(i.getHostName());
-			}
-		}
-		System.out.println("aqui estoy putitos =" + listaip.get(2).toString());
-		return listaip.get(2).toString();
-	}
 
 }
