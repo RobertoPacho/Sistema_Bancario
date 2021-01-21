@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body style="background: #FDFEFE;">
+	<div style="width: 600px">
+		<h2 style="margin-left: 25%; margin-top: 3%;">CREAR
+			ADMINISTRATIVO</h2>
+	</div>
+	<div
+		style="margin-left: 10%; background: #FDFEFE; width: 400px; heigth: 90%; margin-top: 2%; border: 2px #1C2833 solid">
+		<div style="margin-left: 3%; margin-top: 5%;">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					Cedula:
+					<h:inputText value="#{empleadoBEAN.cedula}" />
+				
+					Nombres:
+					<h:inputText value="#{empleadoBEAN.nombres}" />
+				
+	    			apellido:
+	    			<h:inputText value="#{empleadoBEAN.apellido}" />
+				 
+   					telefono:
+   					<h:inputText value="#{empleadoBEAN.telefono}" />
+				      
+    				direccion:
+    				<h:inputText value="#{empleadoBEAN.direccion}" />
+				    
+    				correo:
+    				<h:inputText value="#{empleadoBEAN.correo}" />
+				
+					Usuario:
+    				<h:inputText value="#{empleadoBEAN.usuario}" />
+
+					<h:outputLabel for="txtContrasena" value="Contraseña: " />
+					<h:inputSecret id="txtContrasena" value="#{empleadoBEAN.contracenia}" required="True" />
+					<h:message for="txtContrasena"/>
+				</h:panelGrid>
+				<h:panelGrid columns="2" cellpadding="5">
+    				rol:
+					<h:selectOneMenu id="rol" value="#{empleadoBEAN.rol}">
+						<f:selectItems value="#{empleadoBEAN.roles()}" />
+					</h:selectOneMenu>
+					
+					<h:commandButton value="GUARDAR" action="#{empleadoBEAN.doSaludar()}" />
+					
+					<h:commandButton value="CANCELAR" action="#{empleadoBEAN.reset()}" />
+
+				</h:panelGrid>
+			</h:form>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<div
+		style="background: #FDFEFE; width: 900px; margin-left: 54%; margin-top: -30%;">
+		<h:dataTable value="#{empleadoBEAN.empleadoslista()}" var="empleado"
+			border="4" style="width: 900px;">
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="ITEM" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="CEDULA" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.cedula}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="NOMBRES" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.nombres}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="APELLIDOS" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.apellido}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="TELEFONO" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.telefono}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="DIRECCION" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.direccion}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="CORREO" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.correo}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="CONTRESEÑA" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.contracenia}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="ROL" />
+				</f:facet>
+				<h:outputLabel value="#{empleado.rol}" />
+			</h:column>
+		</h:dataTable>
+	</div>
+</body>
+</html>

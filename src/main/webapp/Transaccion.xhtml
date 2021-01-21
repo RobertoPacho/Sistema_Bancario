@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<body>
+	<h:panelGrid columns="1">
+		<h2>COOPERATIVA E.S.E</h2>
+	</h:panelGrid>
+	<h:form id="trans" style="width:600px; background:#A9CCE3;">
+		<h:outputText value="Buscar Cedula: " />
+		<br />
+		<p:inputText id="cedula" value="#{transaccionesBEAN.cedula}">
+			<p:ajax event="keyup" update="out1" />
+			<p:ajax event="keyup" update="ncuenta" />
+		</p:inputText>
+		<br />
+		<br />
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputText value="Cliente: " />
+			<h:outputText id="out1" value="#{transaccionesBEAN.buscarcedula()}" style="border: #000000 1px solid;" />
+			
+			#Cuenta:
+			<h:outputText id="ncuenta" value="#{transaccionesBEAN.cuentam()}"
+						style="border: #000000 1px solid;" />
+						
+			Monto $:
+			<h:inputText value="#{transaccionesBEAN.monto}" />
+			
+			<p:growl id="msg"/>
+			<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+				Tipo de transaccion:
+        		<p:selectBooleanCheckbox value="#{transaccionesBEAN.check1}" itemLabel="Retiro">
+        		</p:selectBooleanCheckbox>
+        		<p:selectBooleanCheckbox value="#{transaccionesBEAN.check2}" itemLabel="Deposito">
+        		</p:selectBooleanCheckbox>
+        	
+    		</h:panelGrid>
+			<h:commandButton value="CONTINUAR" action="#{transaccionesBEAN.retiro()}"/>
+			
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

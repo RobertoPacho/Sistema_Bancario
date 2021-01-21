@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>SO question 3491969</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+            $(document).ready(function() {
+                $('#tabs a').click(function() {
+                    $('#panels').children().hide();
+                    $($(this).attr('href')).show();
+                });
+            });
+        </script>
+	<style>
+#tabs li {
+	xlist-style-type: none;
+	display: inline;
+}
+
+#tabs li .tab1 {
+	width: 120px;
+	height: 45px;
+	margin-left: -9px;
+	background: #000000;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+#tabs li .tab1:hover {
+	background: rgba(0, 0, 0, 0);
+	color: #3a7999;
+	box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+#panels {
+	margin-top: -16px;
+	width: 100%;
+	height: 850px;
+	border: 3px solid black;
+}
+
+.hide {
+	display: none;
+}
+</style>
+</h:head>
+<h:body>
+	<ul id="tabs">
+		<li><a href="#panel1"><BUTTON class="tab1">Empleados</BUTTON></a></li>
+		<li><a href="#panel2"><BUTTON class="tab1">Intereses</BUTTON></a></li>
+		<li><a href="#panel3"><BUTTON class="tab1">holi</BUTTON></a></li>
+	</ul>
+	<div id="panels">
+		<div id="panel1">
+			<div style="width: 600px">
+				<h2 style="margin-left: 25%; margin-top: 3%;">CREAR
+					ADMINISTRATIVO</h2>
+			</div>
+			<div
+				style="margin-left: 5%; background: #FDFEFE; width: 400px; heigth: 90%; margin-top: 2%; border: 2px #1C2833 solid">
+				<div style="margin-left: 1%; margin-top: 5%;">
+					<h:form>
+						<h:panelGrid columns="2" cellpadding="5">
+					Cedula:
+					<h:inputText value="#{empleadoBEAN.cedula}" />
+				
+					Nombres:
+					<h:inputText value="#{empleadoBEAN.nombres}" />
+				
+	    			apellido:
+	    			<h:inputText value="#{empleadoBEAN.apellido}" />
+				 
+   					telefono:
+   					<h:inputText value="#{empleadoBEAN.telefono}" />
+				      
+    				direccion:
+    				<h:inputText value="#{empleadoBEAN.direccion}" />
+				    
+    				correo:
+    				<h:inputText value="#{empleadoBEAN.correo}" />
+				
+					Usuario:
+    				<h:inputText value="#{empleadoBEAN.usuario}" />
+
+							<h:outputLabel for="txtContrasena" value="Contraseña: " />
+							<h:inputSecret id="txtContrasena"
+								value="#{empleadoBEAN.contracenia}" required="True" />
+							<h:message for="txtContrasena" />
+						</h:panelGrid>
+						<h:panelGrid columns="2" cellpadding="5">
+    				rol:
+					<h:selectOneMenu id="rol" value="#{empleadoBEAN.rol}">
+								<f:selectItems value="#{empleadoBEAN.roles()}" />
+							</h:selectOneMenu>
+
+							<h:commandButton value="GUARDAR"
+								action="#{empleadoBEAN.doSaludar()}" />
+
+							<h:commandButton value="CANCELAR"
+								action="#{empleadoBEAN.reset()}" />
+
+						</h:panelGrid>
+					</h:form>
+				</div>
+			</div>
+			<br /> <br />
+			<div
+				style="background: #FDFEFE; width: 900px; margin-left: 30%; margin-top: -23%;">
+				<h:dataTable value="#{empleadoBEAN.empleadoslista()}" var="empleado"
+					border="4" style="width: 900px;">
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="ITEM" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="CEDULA" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.cedula}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="NOMBRES" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.nombres}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="APELLIDOS" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.apellido}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="TELEFONO" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.telefono}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="DIRECCION" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.direccion}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="CORREO" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.correo}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="CONTRESEÑA" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.contracenia}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="ROL" />
+						</f:facet>
+						<h:outputLabel value="#{empleado.rol}" />
+					</h:column>
+				</h:dataTable>
+			</div>
+
+		</div>
+		<div id="panel2" class="hide">
+			<h:form>
+				<div style="margin-left: 2%; margin-top: 2%">
+					Tasa de Interes Anterior
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:dataTable value="#{polizaBEAN.listaInteresesBean()}"
+								var="tasaInteres" border="4" style="width: 400px;">
+								<h:column>
+									<f:facet name="header">
+										<h:outputLabel value="Tiempo" />
+									</f:facet>
+									<h:outputLabel value="#{tasaInteres.tiempo}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputLabel value="Tasa de Interes" />
+									</f:facet>
+									<h:outputLabel value="#{tasaInteres.tasa}%" />
+								</h:column>
+							</h:dataTable>
+						</h:panelGrid>
+					</h:panelGrid>
+				</div>
+
+				<div style="margin-left: 27%; margin-top: -12%; width: 500px;">
+					Tasa de Interes Nueva
+					<h:panelGrid columns="1" style="border: 2px black solid;">
+						<h:outputLabel value="Tiempo" style="width:100px;" />
+						<h:inputText value="#{tasaInteresBEAN.etiempo1}"
+							style="width:100px;" />
+						<h:inputText value="#{tasaInteresBEAN.etiempo2}"
+							style="width:100px;" />
+						<h:inputText value="#{tasaInteresBEAN.etiempo3}"
+							style="width:100px;" />
+						<h:inputText value="#{tasaInteresBEAN.etiempo4}"
+							style="width:100px;" />
+						<h:inputText value="#{tasaInteresBEAN.etiempo5}"
+							style="width:100px;" />
+						<h:inputText value="#{tasaInteresBEAN.etiempo6}"
+							style="width:100px;" />
+					</h:panelGrid>
+					<h:panelGrid columns="1"
+						style="margin-left: 25.8%; margin-top: -51.4%; border: 2px black solid;">
+						<h:outputLabel value="Tasa Interes" />
+						<h:inputText value="#{tasaInteresBEAN.etasa1}" style="width:70px;" />
+						<h:inputText value="#{tasaInteresBEAN.etasa2}" style="width:70px;" />
+						<h:inputText value="#{tasaInteresBEAN.etasa3}" style="width:70px;" />
+						<h:inputText value="#{tasaInteresBEAN.etasa3}" style="width:70px;" />
+						<h:inputText value="#{tasaInteresBEAN.etasa4}" style="width:70px;" />
+						<h:inputText value="#{tasaInteresBEAN.etasa5}" style="width:70px;" />
+					</h:panelGrid>
+					<p:growl id="msg" />
+					<h:panelGrid columns="1"
+						style="margin-left: 47.5%; margin-top: -50%; ">
+						<h:outputLabel value="Modificar" />
+						<p:selectBooleanCheckbox value="#{tasaInteresBEAN.tasa1}"
+							style="margin-top:10%;">
+							<p:ajax update="msg" listener="#{tasaInteresBEAN.addMessage}" />
+						</p:selectBooleanCheckbox>
+						<p:selectBooleanCheckbox value="#{tasaInteresBEAN.tasa2}"
+							style="margin-top:15%;" />
+						<p:selectBooleanCheckbox value="#{tasaInteresBEAN.tasa3}"
+							style="margin-top:15%;" />
+						<p:selectBooleanCheckbox value="#{tasaInteresBEAN.tasa4}"
+							style="margin-top:15%;" />
+						<p:selectBooleanCheckbox value="#{tasaInteresBEAN.tasa5}"
+							style="margin-top:15%;" />
+						<p:selectBooleanCheckbox value="#{tasaInteresBEAN.tasa6}"
+							style="margin-top:15%;" />
+					</h:panelGrid>
+					<a href="#panel1"><h:commandButton value="Establecer Cambios"
+						action="#{tasaInteresBEAN.prueba()}" style="margin-top:2%;"/> </a>
+				</div>
+			</h:form>
+		</div>
+		<div id="panel3" class="hide">panel3 content</div>
+	</div>
+</h:body>
+</html>

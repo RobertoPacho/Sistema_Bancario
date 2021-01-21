@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<body>
+	<h:panelGrid columns="1">
+		<h2>CREAR CUENTA</h2>
+	</h:panelGrid>
+	<h:panelGrid columns="2" cellpadding="10"
+		style="width:200px; background:#A9CCE3;">
+		<h:form id="datos">
+			<p:panel id="panel" style="margin-bottom:10px;">
+		  				tipoCuenta:
+						<h:selectOneMenu id="tipoCuenta"
+					value="#{aperturaCuentaBEAN.tipoCuenta}">
+					<f:selectItem itemLabel="cuenta corriente"
+						itemValue="cuenta corriente" />
+					<f:selectItem itemLabel="cuenta de ahorros"
+						itemValue="cuenta de ahorros" />
+				</h:selectOneMenu>
+				<br />
+				<br />
+							numerocuenta:
+							<h:outputLabel value="#{aperturaCuentaBEAN.doAleatorio()}" />
+				<br />
+				<br />
+							
+	    					cedula:
+	    					<h:inputText value="#{aperturaCuentaBEAN.cedula}" />
+				<br />
+					
+   							nombres:
+   							<h:inputText value="#{aperturaCuentaBEAN.nombres}" />
+				<br />
+					     
+    						apellido:
+    						<h:inputText value="#{aperturaCuentaBEAN.apellido}" />
+				<br />
+					
+    						direccion:
+    						<h:inputText value="#{aperturaCuentaBEAN.direccion}" />
+				<br />
+					
+							correo:
+    						<h:inputText value="#{aperturaCuentaBEAN.correo}" />
+				<br />
+					
+   							telefono:
+   							<h:inputText value="#{aperturaCuentaBEAN.telefono}" />
+				<br />
+					
+    						celular:
+   							<h:inputText value="#{aperturaCuentaBEAN.celular}" />
+
+				<br />
+				<br />
+				<h:commandButton value="Guardar"
+					action="#{aperturaCuentaBEAN.doAgregarCuenta()}" />
+
+				<h:commandButton value="Cancelar" update="panel" process="@this"
+					action="#{aperturaCuentaBEAN.reset()}" style="margin-right:20px;" />
+
+				<br />
+				<br />
+			</p:panel>
+		</h:form>
+
+		<h:panelGrid columns="2" cellpadding="10">
+			<h:dataTable value="#{aperturaCuentaBEAN.listaCuentas()}"
+				var="cuenta" border="4" style="width: 900px;">
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="ITEM" />
+					</f:facet>
+					<h:outputLabel value="#{cuenta.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="TIPO" />
+					</f:facet>
+					<h:outputLabel value="#{cuenta.tipoCuenta}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="NUMERO CUENTA" />
+					</f:facet>
+					<h:outputLabel value="#{cuenta.numerocuenta}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="NOMBRES" />
+					</f:facet>
+					<h:outputLabel value="#{cuenta.nombres}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="APELLIDOS" />
+					</f:facet>
+					<h:outputLabel value="#{cuenta.apellido}" />
+				</h:column>
+			</h:dataTable>
+		</h:panelGrid>
+
+	</h:panelGrid>
+</body>
+</html>
