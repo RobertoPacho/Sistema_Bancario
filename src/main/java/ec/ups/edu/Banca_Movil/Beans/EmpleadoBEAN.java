@@ -29,8 +29,10 @@ public class EmpleadoBEAN {
     private String telefono;       
     private String direccion;     
     private String correo; 
+    private String usuario;
     private String contracenia;
     private String rol;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -84,6 +86,12 @@ public class EmpleadoBEAN {
 	}
 	public void setRol(String rol) {
 		this.rol = rol;
+	}	
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 	public List<String> roles(){
@@ -95,7 +103,12 @@ public class EmpleadoBEAN {
 	}
 	
 	public List<Empleado> empleadoslista() throws Exception{
+		//ultimoLogi();
 		return empleadoON.listaEmpleados();		
+	}
+	
+	public void ultimoLogi() {
+		System.out.println(empleadoON.ultimoLog());
 	}
     
     //ation controler
@@ -108,13 +121,23 @@ public class EmpleadoBEAN {
     	empleado.setTelefono(telefono);
     	empleado.setDireccion(direccion);
     	empleado.setCorreo(correo);
+    	empleado.setUsuario(usuario);
     	empleado.setContracenia(contracenia);
     	empleado.setRol(rol);
     	empleadoON.insertar(empleado);
-    	System.out.println("guardado ojala");
-    	//correoON.enviarConGMail(correo, "prueba de envio", "hola que mas como vas");
+    	reset();
     	return null;
     	
+    }
+    
+    public void reset() {
+        cedula="";   
+        nombres="";    
+        apellido="";    
+        telefono="";       
+        direccion="";     
+        correo=""; 
+        usuario="";
     }
  
 }

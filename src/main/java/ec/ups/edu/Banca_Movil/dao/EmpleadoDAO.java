@@ -50,6 +50,19 @@ public class EmpleadoDAO {
 			throw new Exception("Erro actualizar Empleado " + e.getMessage());
 		}
 	}
+	
+	public Empleado buscarUser(String usuario) {
+		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;
+		Query q = em.createQuery(
+				"SELECT e FROM Empleado e WHERE e.usuario=:usuario");
+		q.setParameter("usuario", usuario);
+		return (Empleado) q.getSingleResult();
+	}
+	
+	public Empleado ultimoLogin() {
+		Query q = em.createQuery("SELECT l FROM login l ORDER BY l.id DESC LIMIT 1");
+		return (Empleado) q.getSingleResult();
+	}
 
 	/**
 	 * Elimina el metodo mediante el numero el objeto de empleado.

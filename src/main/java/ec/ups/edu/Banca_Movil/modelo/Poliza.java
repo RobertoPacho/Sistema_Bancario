@@ -29,40 +29,28 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "poliza")
-@NamedQueries({
-    @NamedQuery(name = "Poliza.findAll", query = "SELECT p FROM Poliza p"),
-    @NamedQuery(name = "Poliza.findById", query = "SELECT p FROM Poliza p WHERE p.id = :id"),
-    @NamedQuery(name = "Poliza.findByMonto", query = "SELECT p FROM Poliza p WHERE p.monto = :monto"),
-    @NamedQuery(name = "Poliza.findByFechaInicio", query = "SELECT p FROM Poliza p WHERE p.fechaInicio = :fechaInicio"),
-    @NamedQuery(name = "Poliza.findByFechaFin", query = "SELECT p FROM Poliza p WHERE p.fechaFin = :fechaFin"),
-    @NamedQuery(name = "Poliza.findByInteresGanado", query = "SELECT p FROM Poliza p WHERE p.interesGanado = :interesGanado")})
 public class Poliza implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
     
     @Column(name = "monto")
     private double monto;
-    @Basic(optional = false)
-    
+
     @Column(name = "fecha_inicio")
-    @Temporal(TemporalType.DATE)
     private Date fechaInicio;
     @Basic(optional = false)
     
     @Column(name = "fecha_fin")
-    @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    
     @Column(name = "interes_ganado")
     private Double interesGanado;
-    @JoinColumn(name = "cuenta", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    
+    @ManyToOne
     private Cuenta cuenta;
 
     public Poliza() {
