@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,8 +32,10 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "cuenta")
 public class Cuenta implements Serializable {
+	
 
-    private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "id")
     private Integer id;
@@ -198,6 +202,8 @@ public class Cuenta implements Serializable {
         }
         return true;
     }
+    
+    
 
 	@Override
 	public String toString() {
