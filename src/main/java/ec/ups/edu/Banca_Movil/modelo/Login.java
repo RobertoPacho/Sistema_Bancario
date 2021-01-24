@@ -7,20 +7,13 @@ package ec.ups.edu.Banca_Movil.modelo;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 /**
@@ -28,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author RobertoPacho
  */
 @Entity
-@Table(name = "login")
+@Table(name = "Login")
 public class Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -122,8 +115,9 @@ public class Login implements Serializable {
 	}
 
 	@Override
-    public String toString() {
-        return "ec.edu.ups.banca_movil.modelo.Login[ id=" + id + " ]";
-    }
-    
+	public String toString() {
+		return "Login [id=" + id + ", fecha=" + fecha + ", acceso=" + acceso + ", ip=" + ip + ", empleado=" + empleado
+				+ "]";
+	}
+   
 }

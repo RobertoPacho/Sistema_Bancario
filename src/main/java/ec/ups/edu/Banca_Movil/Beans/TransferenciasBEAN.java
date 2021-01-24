@@ -135,7 +135,6 @@ public class TransferenciasBEAN {
 	// <p:ajax update="msg" listener="#{transaccionesBEAN.addMessage()}"/>
 	public String retiro() throws Exception {
 		Date objDate = new Date();
-		double suma = 0.0;
 		List<Cuenta> listaC = cuentaON.listacuentasCliente2(cedula);
 		if (check1) {// RETIRO
 			if (listaC.size() > 0) {

@@ -31,12 +31,12 @@
 			</p:inputText>
 			
 			Tasa
-			<h:outputText id="tasa" value="" style="border: #000000 1px solid;" />
+			<h:outputText id="tasa" value="#{polizaBEAN.tasa()}" style="border: #000000 1px solid;" />
 			</h:panelGrid>
 			
 			<br/>
-			<h:commandButton value="Simular" action="#{polizaBEAN.listo()}" />
-			<h:commandButton value="Solicitar" action="#{polizaBEAN.listo()}" />
+			<h:commandButton value="Simular" action="#{polizaBEAN.simular()}" />
+			<h:commandButton value="Solicitar" action="#{polizaBEAN.solicitar()}" />
 			<br/>
 			<br/>
 		</div>
@@ -73,19 +73,19 @@
 						<f:facet name="header">
 							<h:outputLabel value="Plazo" />
 						</f:facet>
-						<h:outputLabel value="#{tasa.toString()}" />
+						<h:outputLabel value="#{polizaBEAN.plazo}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Tasa de Interes" />
 						</f:facet>
-						<h:outputLabel value="#{tasa.toString()}" />
+						<h:outputLabel value="#{polizaBEAN.tasa}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Interes Ganado" />
 						</f:facet>
-						<h:outputLabel value="#{tasa.toString()}" />
+						<h:outputLabel value="#{polizaBEAN.interesGanado}" />
 					</h:column>
 				</h:dataTable>
 			</h:panelGrid>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Acceso Asistente</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+            $(document).ready(function() {
+                $('#tabs a').click(function() {
+                    $('#panels').children().hide();
+                    $($(this).attr('href')).show();
+                });
+            });
+        </script>
+	<style>
+#tabs li {
+	xlist-style-type: none;
+	display: inline;
+}
+
+#tabs li .tab1 {
+	width: 500px;
+	height: 45px;
+	margin-left: -9px;
+	background: #000000;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+#tabs li .tab1:hover {
+	background: rgba(0, 0, 0, 0);
+	color: #3a7999;
+	box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+#panels {
+	margin-top: -16px;
+	width: 100%;
+	height: 850px;
+	border: 3px solid black;
+}
+
+.hide {
+	display: none;
+}
+</style>
+
+</h:head>
+
+<body>
+	<ul id="tabs">
+		<li><a href="#panel1"><BUTTON class="tab1">Solicitudes
+					de Polisas</BUTTON></a></li>
+	</ul>
+	<div id="panels">
+		<div id="panel1">
+			<h:dataTable value="#{empleadoBEAN.empleadoslista()}" var="empleado"
+				border="4" style="width: 900px; margin-left: 5%; margin-top: 2%">
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="ITEM" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="CEDULA" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.cedula}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="NOMBRES" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.nombres}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="APELLIDOS" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.apellido}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="TELEFONO" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.telefono}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="DIRECCION" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.direccion}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="CORREO" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.correo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="CONTRESEÑA" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.contracenia}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="ROL" />
+					</f:facet>
+					<h:outputLabel value="#{empleado.rol}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</div>
+</body>
+</html>
