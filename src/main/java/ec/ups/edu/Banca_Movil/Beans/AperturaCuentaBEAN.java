@@ -49,6 +49,7 @@ public class AperturaCuentaBEAN {
 	private String correo;
 	private String telefono;
 	private String celular;
+	private String usuario;
 	private String contrasena;
 	private Date fechaapertura;
 
@@ -173,6 +174,19 @@ public class AperturaCuentaBEAN {
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
 	}
+	/**
+	 * @return the usuario
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
 	public String getCorreo() {
 		return correo;
@@ -210,6 +224,7 @@ public class AperturaCuentaBEAN {
 		cuenta.setCorreo(correo);
 		cuenta.setTelefono(telefono);
 		cuenta.setCelular(celular);
+		cuenta.setUsuario(cedula);
 		cuenta.setContrasena(clave);
 		cuenta.setFechaapertura(objDate);
 		cuenta.setEmpleado(empleadoON.buscarid(login()));

@@ -80,7 +80,7 @@ public class CuentaDAO {
 	public Cuenta read(int id) throws Exception {
 		return em.find(Cuenta.class, id);
 	}
-	
+		
 	/**
 	 * buscamos mediante la cedula
 	 * 
