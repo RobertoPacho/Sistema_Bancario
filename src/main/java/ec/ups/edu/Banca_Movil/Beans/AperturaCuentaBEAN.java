@@ -11,6 +11,7 @@ import org.primefaces.PrimeFaces;
 
 import ec.ups.edu.Banca_Movil.modelo.Cuenta;
 import ec.ups.edu.Banca_Movil.modelo.Empleado;
+import ec.ups.edu.Banca_Movil.on.ALoginON;
 import ec.ups.edu.Banca_Movil.on.CorreoON;
 import ec.ups.edu.Banca_Movil.on.CuentaON;
 import ec.ups.edu.Banca_Movil.on.EmpleadoON;
@@ -34,6 +35,9 @@ public class AperturaCuentaBEAN {
 	@Inject
 	private Empleado empleado;
 
+	@Inject
+	private ALoginON aLoginON;
+
 	private Integer id;
 	private String tipoCuenta;
 	private int numerocuenta;
@@ -45,10 +49,11 @@ public class AperturaCuentaBEAN {
 	private String correo;
 	private String telefono;
 	private String celular;
+	private String usuario;
 	private String contrasena;
 	private Date fechaapertura;
-	
-	int c=1;
+
+	int c = 1;
 
 	public Integer getId() {
 		return id;
@@ -169,6 +174,19 @@ public class AperturaCuentaBEAN {
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
 	}
+	/**
+	 * @return the usuario
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
 	public String getCorreo() {
 		return correo;
@@ -206,10 +224,10 @@ public class AperturaCuentaBEAN {
 		cuenta.setCorreo(correo);
 		cuenta.setTelefono(telefono);
 		cuenta.setCelular(celular);
+		cuenta.setUsuario(cedula);
 		cuenta.setContrasena(clave);
 		cuenta.setFechaapertura(objDate);
-
-		cuenta.setEmpleado(empleadoON.buscarid(1));
+		cuenta.setEmpleado(empleadoON.buscarid(login()));
 
 		cuentaON.insertar(cuenta);
 
@@ -243,13 +261,17 @@ public class AperturaCuentaBEAN {
 	public String buscarcedula() throws Exception {
 		cuenta = cuentaON.buscarCedula(cedula);
 		nombres = cuenta.getNombres() + " " + cuenta.getApellido();
-		System.out.println(nombres.length());
-		if (nombres.length()==10) {
-			numerocuenta=40;
-			//numerocuenta = Integer.valueOf(cuenta.getNumerocuenta());
+		if (nombres.length() == 10) {
+			return nombres;
+		} else {
+			c++;
+		}
 		return nombres;
-		}else {c++;}
-	return nombres;
+	}
+
+	public int login() throws Exception {
+		empleado = aLoginON.fastLogin();
+		return empleado.getId();
 	}
 
 }

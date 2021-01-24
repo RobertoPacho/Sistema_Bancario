@@ -192,10 +192,10 @@ public class LoginBean {
 	
 	public String direccionip() throws SocketException {
 		listaip = new ArrayList<String>();
-		Enumeration e = NetworkInterface.getNetworkInterfaces();
+		Enumeration<NetworkInterface> e = NetworkInterface.getNetworkInterfaces();
 		while (e.hasMoreElements()) {
 			NetworkInterface n = (NetworkInterface) e.nextElement();
-			Enumeration ee = n.getInetAddresses();
+			Enumeration<InetAddress> ee = n.getInetAddresses();
 			while (ee.hasMoreElements()) {
 				InetAddress i = (InetAddress) ee.nextElement();
 				listaip.add(i.getHostName());
@@ -204,8 +204,6 @@ public class LoginBean {
 		}
 		System.out.println("aqui estoy putitos =" + listaip.get(2).toString());
 		return listaip.get(2).toString();
-	
-		
 	}
 
 }

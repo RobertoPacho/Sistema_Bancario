@@ -4,9 +4,8 @@
 package ec.ups.edu.Banca_Movil.Beans;
 
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -207,37 +206,48 @@ public class TasaInteresBEAN {
 			tasaInteres.setTasa(etasa1);
 			tasaInteres.setTiempo(etiempo1);
 			tasaInteresON.actualizar(tasaInteres);
+			etasa1=0.0;
+			tasa1=false;
 		}
 		if (tasa2) {
 			tasaInteres.setId(2);
 			tasaInteres.setTasa(etasa2);
 			tasaInteres.setTiempo(etiempo2);
 			tasaInteresON.actualizar(tasaInteres);
+			etasa2=0.0;
+			tasa1=false;
 		}
 		if (tasa3) {
 			tasaInteres.setId(3);
 			tasaInteres.setTasa(etasa3);
 			tasaInteres.setTiempo(etiempo3);
 			tasaInteresON.actualizar(tasaInteres);
-
+			etasa3=0.0;
+			tasa1=false;
 		}
 		if (tasa4) {
 			tasaInteres.setId(4);
 			tasaInteres.setTasa(etasa4);
 			tasaInteres.setTiempo(etiempo4);
 			tasaInteresON.actualizar(tasaInteres);
+			etasa4=0.0;
+			tasa1=false;
 		}
 		if (tasa5) {
 			tasaInteres.setId(5);
 			tasaInteres.setTasa(etasa5);
 			tasaInteres.setTiempo(etiempo5);
 			tasaInteresON.actualizar(tasaInteres);
+			etasa5=0.0;
+			tasa1=false;
 		}
 		if (tasa6) {
 			tasaInteres.setId(6);
 			tasaInteres.setTasa(etasa6);
 			tasaInteres.setTiempo(etiempo6);
 			tasaInteresON.actualizar(tasaInteres);
+			etasa6=0.0;
+			tasa1=false;
 		}
 	}
 

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.ups.edu.Banca_Movil.modelo.Empleado;
+import ec.ups.edu.Banca_Movil.on.ALoginON;
 import ec.ups.edu.Banca_Movil.on.EmpleadoON;
 
 @Named
@@ -20,6 +21,9 @@ public class EmpleadoBEAN {
 	
 	@Inject
 	private Empleado empleado;
+	
+	@Inject
+	private ALoginON aLoginON;
 
 	
 	private Integer id;
@@ -103,13 +107,10 @@ public class EmpleadoBEAN {
 	}
 	
 	public List<Empleado> empleadoslista() throws Exception{
-		//ultimoLogi();
 		return empleadoON.listaEmpleados();		
 	}
 	
-	public void ultimoLogi() {
-		System.out.println(empleadoON.ultimoLog());
-	}
+	
     
     //ation controler
     public String doSaludar() throws Exception {
@@ -139,5 +140,10 @@ public class EmpleadoBEAN {
         correo=""; 
         usuario="";
     }
+    
+    public void login() throws Exception {
+		empleado=aLoginON.fastLogin();
+		System.out.println(empleado.toString());
+	}
  
 }

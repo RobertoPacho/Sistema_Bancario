@@ -42,11 +42,16 @@ public class TransaccionesDAO {
 	}
 	
 	public double sumaRetiros(int cuenta_id) {
-		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;
+		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;do
+		double saldo=0;
 		Query q = em.createQuery(
 				"SELECT SUM(cantidad) FROM Transacciones  WHERE tipo='Retiro' AND cuenta_id=:cuenta_id");
 		q.setParameter("cuenta_id", cuenta_id);
-		return (Double) q.getSingleResult();
+		
+		if(q.getSingleResult()!=null) {
+			saldo=(Double) q.getSingleResult();
+		}
+		return saldo;
 	}
 
 	public Transacciones read(int id) throws Exception {

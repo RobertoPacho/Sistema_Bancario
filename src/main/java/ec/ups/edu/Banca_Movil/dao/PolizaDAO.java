@@ -4,12 +4,9 @@
 package ec.ups.edu.Banca_Movil.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import ec.ups.edu.Banca_Movil.modelo.Cuenta;
 import ec.ups.edu.Banca_Movil.modelo.Transacciones;
 
 /**
@@ -31,22 +28,6 @@ public class PolizaDAO {
 		} catch (Exception e) {
 			throw new Exception("Erro actualizar Transaciones " + e.getMessage());
 		}
-	}
-
-	public double sumaDepositos(int cuenta_id) {
-		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;
-		Query q = em.createQuery(
-				"SELECT SUM(cantidad) FROM Transacciones  WHERE tipo='Deposito' AND cuenta_id=:cuenta_id");
-		q.setParameter("cuenta_id", cuenta_id);
-		return (Double) q.getSingleResult();
-	}
-	
-	public double sumaRetiros(int cuenta_id) {
-		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;
-		Query q = em.createQuery(
-				"SELECT SUM(cantidad) FROM Transacciones  WHERE tipo='Retiro' AND cuenta_id=:cuenta_id");
-		q.setParameter("cuenta_id", cuenta_id);
-		return (Double) q.getSingleResult();
 	}
 
 	public Transacciones read(int id) throws Exception {

@@ -41,6 +41,8 @@ public class Cuenta implements Serializable {
     private String cedula;
     @Column(name = "celular")
     private String celular;
+    @Column(name = "usuario")
+    private String usuario;
     @Column(name = "contrasena")
     private String contrasena;
     @Column(name = "direccion")
@@ -48,7 +50,6 @@ public class Cuenta implements Serializable {
     @Column(name = "correo")
     private String correo;
     @Column(name = "fechaapertura")
-    @Temporal(TemporalType.DATE)
     private Date fechaapertura;
     @Column(name = "nombres")
     private String nombres;
@@ -142,8 +143,21 @@ public class Cuenta implements Serializable {
         this.numerocuenta = numerocuenta;
     }
 
+    /**
+	 * @return the usuario
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
 
-    public String getTelefono() {
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getTelefono() {
         return telefono;
     }
 

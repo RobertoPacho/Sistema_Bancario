@@ -21,8 +21,8 @@ import javax.persistence.Table;
  * @author RobertoPacho
  */
 @Entity
-@Table(name = "Login")
-public class Login implements Serializable {
+@Table(name = "LoginClientes")
+public class LoginClientes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,18 +38,21 @@ public class Login implements Serializable {
     @Column(name = "ip")
     private String ip;
     
+    @Column(name = "intentos")
+    private int intentos;
+    
     
     @ManyToOne
-    private Empleado empleado;
+    private Cuenta cuenta;
 
-    public Login() {
+    public LoginClientes() {
     }
 
-    public Login(Integer id) {
+    public LoginClientes(Integer id) {
         this.id = id;
     }
 
-    public Login(Integer id, Date fecha, boolean acceso) {
+    public LoginClientes(Integer id, Date fecha, boolean acceso) {
         this.id = id;
         this.fecha = fecha;
         this.acceso = acceso;
@@ -101,23 +104,37 @@ public class Login implements Serializable {
 	}
 
 	/**
-	 * @return the empleado
+	 * @return the cuenta
 	 */
-	public Empleado getEmpleado() {
-		return empleado;
+	public Cuenta getCuenta() {
+		return cuenta;
 	}
 
 	/**
-	 * @param empleado the empleado to set
+	 * @return the intentos
 	 */
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
+	public int getIntentos() {
+		return intentos;
+	}
+
+	/**
+	 * @param intentos the intentos to set
+	 */
+	public void setIntentos(int intentos) {
+		this.intentos = intentos;
+	}
+
+	/**
+	 * @param cuenta the cuenta to set
+	 */
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
 	}
 
 	@Override
 	public String toString() {
-		return "Login [id=" + id + ", fecha=" + fecha + ", acceso=" + acceso + ", ip=" + ip + ", empleado=" + empleado
-				+ "]";
+		return "LoginClientes [id=" + id + ", fecha=" + fecha + ", acceso=" + acceso + ", ip=" + ip + ", intentos="
+				+ intentos + ", cuenta=" + cuenta + "]";
 	}
-   
+ 
 }
