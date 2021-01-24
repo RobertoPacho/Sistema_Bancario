@@ -19,6 +19,7 @@ import ec.ups.edu.Banca_Movil.modelo.Empleado;
 import ec.ups.edu.Banca_Movil.modelo.Login;
 import ec.ups.edu.Banca_Movil.modelo.LoginClientes;
 import ec.ups.edu.Banca_Movil.on.ALoginON;
+import ec.ups.edu.Banca_Movil.on.CorreoON;
 import ec.ups.edu.Banca_Movil.on.CuentaON;
 import ec.ups.edu.Banca_Movil.on.EmpleadoON;
 import ec.ups.edu.Banca_Movil.on.LoginClientesON;
@@ -37,6 +38,9 @@ public class LoginClientesBean {
 
 	@Inject
 	private LoginClientes loginClients;
+	
+	@Inject
+	private CorreoON correoON;
 
 	private int id;
 	private Date fecha;
@@ -169,12 +173,16 @@ public class LoginClientesBean {
 		cuenta = cuentaON.buscarCedula(cedula);
 		loginClients=loginClientesON.ultimoLogin(cuenta.getId());
 		cuenta_id = cuenta.getId();
-
+		System.out.println(cuenta.getCorreo());
 		Date fecha = new Date();
 		acceso = false;
 
 		if (loginClients.getIntentos() == 3) {
 			confirm();
+			correoON.enviarConGMail(cuenta.getCorreo(), "COOPERATIVA E.S.E",
+					"COOPERATIVA E.S.E le informa que el acceso a la plataforma COOPERATIVA E.S.E_Virtual fue:  BLOQUEADA intentos de acceso fraudolentos   Maquina:" + direccionip()
+							+ " Fecha:" + fecha);
+			
 		}else {
 			if (cuenta.getContrasena().equals(contrasena)) {
 				acceso = true;
@@ -185,6 +193,9 @@ public class LoginClientesBean {
 				loginClients.setIntentos(cont);
 				loginClients.setCuenta(cuenta);
 				loginClientesON.insertar(loginClients);
+				correoON.enviarConGMail(cuenta.getCorreo(), "COOPERATIVA E.S.E",
+						"COOPERATIVA E.S.E le informa que el acceso a la plataforma COOPERATIVA E.S.E_Virtual fue:  CORRECTA   Maquina:" + direccionip()
+								+ " Fecha:" + fecha);
 				return "ventanaCliente.xhtml";
 			} else {
 				loginClients.setId(idLogin());
@@ -195,6 +206,9 @@ public class LoginClientesBean {
 				loginClients.setCuenta(cuenta);
 				loginClientesON.insertar(loginClients);
 				confirm();
+				correoON.enviarConGMail(cuenta.getCorreo(), "COOPERATIVA E.S.E",
+						"COOPERATIVA E.S.E le informa que el acceso a la plataforma COOPERATIVA E.S.E_Virtual fue:  INCORRECTA   Maquina:" + direccionip()
+								+ " Fecha:" + fecha);
 			}
 		}
 		return contrasena;
@@ -223,7 +237,6 @@ public class LoginClientesBean {
 				System.out.println(i.getHostName());
 			}
 		}
-		System.out.println("aqui estoy putitos =" + listaip.get(2).toString());
 		return listaip.get(2).toString();
 	}
 
