@@ -173,7 +173,6 @@ public class LoginClientesBean {
 		cuenta = cuentaON.buscarCedula(cedula);
 		loginClients=loginClientesON.ultimoLogin(cuenta.getId());
 		cuenta_id = cuenta.getId();
-		System.out.println(cuenta.getCorreo());
 		Date fecha = new Date();
 		acceso = false;
 
@@ -207,7 +206,7 @@ public class LoginClientesBean {
 				loginClientesON.insertar(loginClients);
 				confirm();
 				correoON.enviarConGMail(cuenta.getCorreo(), "COOPERATIVA E.S.E",
-						"COOPERATIVA E.S.E le informa que el acceso a la plataforma COOPERATIVA E.S.E_Virtual fue:  INCORRECTA   Maquina:" + direccionip()
+						"COOPERATIVA E.S.E le informa que el acceso a la plataforma COOPERATIVA E.S.E_Virtual fue:  INCORRECTA intentos fallidos="+loginClients.getIntentos()+"  Maquina:" + direccionip()
 								+ " Fecha:" + fecha);
 			}
 		}
@@ -219,11 +218,6 @@ public class LoginClientesBean {
 		return intentosn;
 	}
 	
-	public void pruebaContador() {
-		
-		cont=cont+1;
-		System.out.println(cont);
-	}
 
 	public String direccionip() throws SocketException {
 		listaip = new ArrayList<String>();
@@ -234,7 +228,6 @@ public class LoginClientesBean {
 			while (ee.hasMoreElements()) {
 				InetAddress i = (InetAddress) ee.nextElement();
 				listaip.add(i.getHostName());
-				System.out.println(i.getHostName());
 			}
 		}
 		return listaip.get(2).toString();
