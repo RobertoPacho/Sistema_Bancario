@@ -53,7 +53,7 @@ public class LoginClientesDAO {
 		Query q = em.createQuery(jpql,LoginClientes.class);
 		listalogin= q.getResultList();
 		for (int i=0;i<listalogin.size();i++) {
-			cuenta=cuentaON.buscarid(listalogin.get(i).getId());
+			cuenta=cuentaON.buscarid(listalogin.get(i).getCuenta().getId());
 		}
 		return cuenta;
 	}

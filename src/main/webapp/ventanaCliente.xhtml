@@ -57,31 +57,31 @@
 	</ul>
 	<div id="panels">
 		<div id="panel1">
-			<h:dataTable value="#{ventanaClientesBEAN.mostrarDetalle()}" var="empleado"
+			<h:dataTable value="#{ventanaClientesBEAN.mostrarDetalle()}" var="resumencuenta"
 				border="4" style="width: 900px; margin-left: 5%; margin-top: 2%">
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="#Cuenta" />
 					</f:facet>
-					<h:outputLabel value="#{ventanaClientesBEAN.nCuentaM()}" />
+					<h:outputLabel value="#{resumencuenta.nCuenta}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="Tipo de Cuenta" />
 					</f:facet>
-					<h:outputLabel value="#{ventanaClientesBEAN.tipoCuentaM()}" />
+					<h:outputLabel value="#{resumencuenta.tipocuenta}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="Fecha Ultima Transaccion" />
 					</f:facet>
-					<h:outputLabel value="#{ventanaClientesBEAN.fechaUltinaT()}" />
+					<h:outputLabel value="#{resumencuenta.ultimaTransaccion}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputLabel value="Saldo" />
 					</f:facet>
-					<h:outputLabel value="#{ventanaClientesBEAN.saldoM()}" />
+					<h:outputLabel value="#{resumencuenta.salto}" />
 				</h:column>
 			</h:dataTable>
 		</div>
