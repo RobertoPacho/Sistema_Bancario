@@ -34,6 +34,10 @@ public class TransaccionesON {
 		return transaccionesDAO.read(id);
 	}
 	
+	public Transacciones fastTransaccion(int cuenta_id) throws Exception {
+		return transaccionesDAO.ultimaTransaccion(cuenta_id);
+	}
+	
 	public List<Transacciones> listaTransacciones() throws Exception {
 		return transaccionesDAO.findAll();
 	}
