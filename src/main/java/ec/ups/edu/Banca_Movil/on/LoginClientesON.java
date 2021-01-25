@@ -22,6 +22,9 @@ public class LoginClientesON {
 		return loginClientesDAO.fastLogin(cuenta_id);
 	}
 	
+	public List<LoginClientes> listaLogeoCuenta(int cuenta_id) throws Exception{
+		return loginClientesDAO.buscarloginCliente(cuenta_id);
+	}
 	public Cuenta fastLogin() throws Exception {
 		return loginClientesDAO.ultimoLogin();
 	}
