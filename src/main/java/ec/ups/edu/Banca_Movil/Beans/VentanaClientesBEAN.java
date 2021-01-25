@@ -51,4 +51,8 @@ public class VentanaClientesBEAN {
 		datos.add(resumenCuenta);
 		return datos;
 	}
+	
+	public List<LoginClientes> listaClientes() throws Exception{
+		return loginClientesON.listaLogeoCuenta(cuenta.getId());
+	}
 }

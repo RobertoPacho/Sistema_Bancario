@@ -74,6 +74,13 @@ public class LoginClientesDAO {
 		return loginClientes;
 	}
 	
+	public List<LoginClientes> buscarloginCliente(int cuenta_id) throws Exception {
+		String jpql="Select l from LoginClientes l WHERE cuenta_id=:cuenta_id ORDER BY id";
+		Query q = em.createQuery(jpql,LoginClientes.class);
+		q.setParameter("cuenta_id", cuenta_id);
+		return (List<LoginClientes>) q.getResultList();
+	}
+	
 	public List<LoginClientes> findAll() throws Exception {
 		String jpql="Select l from LoginClientes l ORDER BY id";
 		Query q = em.createQuery(jpql,LoginClientes.class);
