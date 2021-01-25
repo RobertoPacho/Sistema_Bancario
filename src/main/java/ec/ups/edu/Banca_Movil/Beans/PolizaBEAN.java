@@ -190,12 +190,31 @@ public class PolizaBEAN {
 	}
 
 	public void simular() throws Exception {
-		total=(monto*tasa())/plazo;
-		bd = new BigDecimal(total);
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
-        interesGanado=Double.parseDouble(String.valueOf(bd));
+		switch (frecuencia) {
+		case "Dias":
+			total = (monto * (tasa() / 100) * plazo) / 360;
+			bd = new BigDecimal(total);
+			bd = bd.setScale(2, RoundingMode.HALF_UP);
+			interesGanado = Double.parseDouble(String.valueOf(bd));
+			break;
+		case "Meses":
+			total = (monto * (tasa() / 100) * plazo) / 12;
+			bd = new BigDecimal(total);
+			bd = bd.setScale(2, RoundingMode.HALF_UP);
+			interesGanado = Double.parseDouble(String.valueOf(bd));
+			break;
+		case "Años":
+			total = (monto * (tasa() / 100) * plazo) / 1;
+			bd = new BigDecimal(total);
+			bd = bd.setScale(2, RoundingMode.HALF_UP);
+			interesGanado = Double.parseDouble(String.valueOf(bd));
+			break;
+
+		default:
+			break;
+		}
 	}
-	
+
 	public void solicitar() {
 		System.out.println("wueiuehsdsdhj");
 	}

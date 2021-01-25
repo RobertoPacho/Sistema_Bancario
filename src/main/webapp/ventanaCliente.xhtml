@@ -69,6 +69,7 @@
 	<ul id="tabs">
 		<li><a href="#panel1"><BUTTON class="tab1">Estado de cuenta</BUTTON></a></li>
 		<li><a href="#panel2"><BUTTON class="tab2">Historial Login</BUTTON></a></li>
+		<li><a href="#panel3"><BUTTON class="tab2">Poliza</BUTTON></a></li>
 	</ul>
 	<div id="panels">
 		<div id="panel1">
@@ -134,6 +135,9 @@
 					<h:outputLabel value="#{listalogin.intentos}" />
 				</h:column>
 			</h:dataTable>
+		</div>
+		<div id="panel3" class="hide">
+			<ui:include src="poliza.xhtml" />
 		</div>
 	</div>
 </body>
