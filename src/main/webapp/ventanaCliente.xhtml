@@ -57,61 +57,31 @@
 	</ul>
 	<div id="panels">
 		<div id="panel1">
-			<h:dataTable value="#{empleadoBEAN.empleadoslista()}" var="empleado"
+			<h:dataTable value="#{ventanaClientesBEAN.mostrarDetalle()}" var="empleado"
 				border="4" style="width: 900px; margin-left: 5%; margin-top: 2%">
 				<h:column>
 					<f:facet name="header">
-						<h:outputLabel value="ITEM" />
+						<h:outputLabel value="#Cuenta" />
 					</f:facet>
-					<h:outputLabel value="#{empleado.id}" />
+					<h:outputLabel value="#{ventanaClientesBEAN.nCuentaM()}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputLabel value="CEDULA" />
+						<h:outputLabel value="Tipo de Cuenta" />
 					</f:facet>
-					<h:outputLabel value="#{empleado.cedula}" />
+					<h:outputLabel value="#{ventanaClientesBEAN.tipoCuentaM()}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputLabel value="NOMBRES" />
+						<h:outputLabel value="Fecha Ultima Transaccion" />
 					</f:facet>
-					<h:outputLabel value="#{empleado.nombres}" />
+					<h:outputLabel value="#{ventanaClientesBEAN.fechaUltinaT()}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputLabel value="APELLIDOS" />
+						<h:outputLabel value="Saldo" />
 					</f:facet>
-					<h:outputLabel value="#{empleado.apellido}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="TELEFONO" />
-					</f:facet>
-					<h:outputLabel value="#{empleado.telefono}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="DIRECCION" />
-					</f:facet>
-					<h:outputLabel value="#{empleado.direccion}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="CORREO" />
-					</f:facet>
-					<h:outputLabel value="#{empleado.correo}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="CONTRESEÑA" />
-					</f:facet>
-					<h:outputLabel value="#{empleado.contracenia}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputLabel value="ROL" />
-					</f:facet>
-					<h:outputLabel value="#{empleado.rol}" />
+					<h:outputLabel value="#{ventanaClientesBEAN.saldoM()}" />
 				</h:column>
 			</h:dataTable>
 		</div>

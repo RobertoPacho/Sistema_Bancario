@@ -49,7 +49,7 @@ public class LoginClientesDAO {
 	
 	public Cuenta ultimoLogin() throws Exception {
 		List<LoginClientes> listalogin=new ArrayList<LoginClientes>();
-		String jpql="Select l from LoginClientes l ORDER BY id";
+		String jpql="Select l from LoginClientes l WHERE acceso='true' ORDER BY id";
 		Query q = em.createQuery(jpql,LoginClientes.class);
 		listalogin= q.getResultList();
 		for (int i=0;i<listalogin.size();i++) {
@@ -75,7 +75,7 @@ public class LoginClientesDAO {
 	}
 	
 	public List<LoginClientes> findAll() throws Exception {
-		String jpql="Select l from LoginClientes l";
+		String jpql="Select l from LoginClientes l ORDER BY id";
 		Query q = em.createQuery(jpql,LoginClientes.class);
 		return (List<LoginClientes>) q.getResultList();
 	}

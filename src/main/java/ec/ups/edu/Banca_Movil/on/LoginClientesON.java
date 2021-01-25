@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import ec.ups.edu.Banca_Movil.dao.LoginClientesDAO;
+import ec.ups.edu.Banca_Movil.modelo.Cuenta;
 import ec.ups.edu.Banca_Movil.modelo.LoginClientes;
 
 @Stateless
@@ -20,6 +21,11 @@ public class LoginClientesON {
 	public LoginClientes ultimoLogin(int cuenta_id) throws Exception {
 		return loginClientesDAO.fastLogin(cuenta_id);
 	}
+	
+	public Cuenta fastLogin() throws Exception {
+		return loginClientesDAO.ultimoLogin();
+	}
+	
 	
 	public List<LoginClientes> listalogin() throws Exception {
 		return loginClientesDAO.findAll();
