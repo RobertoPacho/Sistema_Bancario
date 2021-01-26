@@ -30,51 +30,30 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "Solicitud")
-@NamedQueries({
-    @NamedQuery(name = "Solicitud.findAll", query = "SELECT s FROM Solicitud s"),
-    @NamedQuery(name = "Solicitud.findById", query = "SELECT s FROM Solicitud s WHERE s.id = :id"),
-    @NamedQuery(name = "Solicitud.findByFrecuencia", query = "SELECT s FROM Solicitud s WHERE s.frecuencia = :frecuencia"),
-    @NamedQuery(name = "Solicitud.findByPlazo", query = "SELECT s FROM Solicitud s WHERE s.plazo = :plazo"),
-    @NamedQuery(name = "Solicitud.findByTasaInteres", query = "SELECT s FROM Solicitud s WHERE s.tasaInteres = :tasaInteres"),
-    @NamedQuery(name = "Solicitud.findByFechaInicio", query = "SELECT s FROM Solicitud s WHERE s.fechaInicio = :fechaInicio"),
-    @NamedQuery(name = "Solicitud.findByFechaFin", query = "SELECT s FROM Solicitud s WHERE s.fechaFin = :fechaFin"),
-    @NamedQuery(name = "Solicitud.findByCopiacedula", query = "SELECT s FROM Solicitud s WHERE s.copiacedula = :copiacedula"),
-    @NamedQuery(name = "Solicitud.findByPlanillaServBasicos", query = "SELECT s FROM Solicitud s WHERE s.planillaServBasicos = :planillaServBasicos")})
 public class Solicitud implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
     
     @Column(name = "frecuencia")
     private String frecuencia;
-    @Basic(optional = false)
     
     @Column(name = "plazo")
     private int plazo;
-    @Basic(optional = false)
     
     @Column(name = "tasa_interes")
     private double tasaInteres;
-    @Basic(optional = false)
     
     @Column(name = "fecha_inicio")
-    @Temporal(TemporalType.DATE)
     private Date fechaInicio;
-    @Basic(optional = false)
     
     @Column(name = "fecha_fin")
-    @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    @Basic(optional = false)
     
     @Column(name = "copiacedula")
     private String copiacedula;
-    @Basic(optional = false)
     
     @Column(name = "planilla_serv_basicos")
     private String planillaServBasicos;

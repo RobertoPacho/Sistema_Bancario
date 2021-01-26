@@ -174,9 +174,11 @@ public class Empleado implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "ec.edu.ups.banca_movil.modelo.Empleado[ id=" + id + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", cedula=" + cedula + ", nombres=" + nombres + ", apellido=" + apellido
+				+ ", telefono=" + telefono + ", direccion=" + direccion + ", correo=" + correo + ", usuario=" + usuario
+				+ ", contracenia=" + contracenia + ", rol=" + rol + "]";
+	}
     
 }

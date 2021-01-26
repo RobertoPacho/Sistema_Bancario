@@ -53,6 +53,7 @@ public class EmpleadoON {
             return empleadoDAO.findAll();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
   
 =======
     
@@ -61,6 +62,8 @@ public class EmpleadoON {
     }
 >>>>>>> RobertoPacho
 
+=======
+>>>>>>> RobertoPacho
     /**
      * Este metodo nos ayuda a buscar el empleado por cedula, para poder ser
      * consumido desde el controllerBean

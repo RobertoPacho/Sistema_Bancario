@@ -229,6 +229,14 @@
 		    <artifactId>jersey-bundle</artifactId>
 		    <version>1.19.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.2</version>
+		</dependency>
+		<!-- Thanks for using https://jar-download.com -->
+					
+		
 	</dependencies>
 
 	<build>
