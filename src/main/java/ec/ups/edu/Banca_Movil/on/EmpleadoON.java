@@ -52,15 +52,19 @@ public class EmpleadoON {
     public List<Empleado> listaEmpleados() throws Exception {
             return empleadoDAO.findAll();
     }
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
   
 =======
     
+=======
+
+>>>>>>> Stashed changes
     public Empleado ultimoLog() {
     	return empleadoDAO.ultimoLogin();
     }
->>>>>>> RobertoPacho
+
 
 =======
 >>>>>>> RobertoPacho

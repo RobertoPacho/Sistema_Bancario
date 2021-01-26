@@ -25,17 +25,10 @@ public class ClienteServiceSOAP {
 	}
 	
 	@WebMethod
-<<<<<<< HEAD
-	public String guardar(Empleado empleado) throws Exception{
-		
-			on.insertar(empleado);
-			return "ok";
-		
-=======
+
 	public String guardar(Empleado empleado) throws Exception {
 		on.insertar(empleado);
-		return "ok";
->>>>>>> RobertoPacho
+		return"ok";
 	}
 	@WebMethod
 	public List<Empleado> empleadoslista() throws Exception{
