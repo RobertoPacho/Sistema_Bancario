@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	
+	<title>Ejemplo Calendar Primefaces</title>
+</h:head>
+
+<body>
+<p:panelGrid columns="3">
+	<h5>Tipo de transaccion</h5>
+	<h5>fecha Desde</h5>
+	<h5>Fecha Hasta</h5>
+</p:panelGrid>
+<div style="border: 1px black solid;'">
+<h:panelGrid columns="3">
+	<h5>Tipo de transaccion</h5>
+	<p:calendar value="#{calendarView.date}"></p:calendar>
+	<h5>fecha Desde</h5>
+	<p:calendar value="#{calendarView.date}"></p:calendar>
+	<h5>Fecha Hasta</h5>
+	<p:calendar value="#{calendarView.date}"></p:calendar>
+</h:panelGrid>
+</div>
+</body>
+</html>

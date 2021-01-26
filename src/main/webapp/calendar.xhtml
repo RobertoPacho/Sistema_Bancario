@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Ejemplo Calendar Primefaces</title>
+</h:head>
+
+<body>
+	<h:form>
+	<div style="margin-top: 40px;">
+	<h:panelGrid columns="1">
+		<h:outputText value="Tipo Transaccion:" />
+		
+		<h:selectOneMenu id="tipoCuenta" value="#{aperturaCuentaBEAN.tipoCuenta}" style="width: 180px;">
+			<f:selectItem itemLabel="Retito" itemValue="Retiro" />
+			<f:selectItem itemLabel="Deposito"	itemValue="Deposito" />
+		</h:selectOneMenu>
+	</h:panelGrid>
+	</div>
+	
+	<div style="margin-left: 16%; margin-top: -5%;">
+	<h:panelGrid columns="2">
+		<h:outputText value="Fecha desde:" />
+		<h:outputText value="#{calendarView.date3}">
+			<f:convertDateTime pattern="MM/dd/yyyy" />
+		</h:outputText>
+		<p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+	</h:panelGrid>
+	</div>
+	<div style="margin-left: 38%; margin-top: -5.5%; ">
+	<h:panelGrid columns="2">
+		<h:outputText value="Fecha Hasta:" />
+		<h:outputText value="#{calendarView.date3}">
+			<f:convertDateTime pattern="MM/dd/yyyy" />
+		</h:outputText>
+		<p:calendar id="button1" value="#{calendarView.date3}" showOn="button" />
+	</h:panelGrid>
+	</div>
+	<div style="margin-left: 20%" >
+		<h:button  value="Consultar" style="text-align: center; width: 180px;"></h:button>
+	</div>
+</h:form>
+</body>
+</html>

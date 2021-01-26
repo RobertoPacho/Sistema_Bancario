@@ -96,8 +96,8 @@
 						<h:panelGrid columns="2" cellpadding="5">
     				rol:
 					<h:selectOneMenu id="rol" value="#{empleadoBEAN.rol}">
-								<f:selectItems value="#{empleadoBEAN.roles()}" />
-							</h:selectOneMenu>
+						<f:selectItems value="#{empleadoBEAN.roles()}" />
+					</h:selectOneMenu>
 
 							<h:commandButton value="GUARDAR"
 								action="#{empleadoBEAN.doSaludar()}" />
