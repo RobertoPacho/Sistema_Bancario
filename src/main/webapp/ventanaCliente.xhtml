@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+	xmlns:a4j="http://richfaces.org/a4j" 
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 <title>Cuenta Cliente</title>
@@ -15,7 +16,18 @@
                     $($(this).attr('href')).show();
                 });
             });
-        </script>
+            
+            function showContent() {
+                element = document.getElementById("panel4");
+                check = document.getElementById("check");
+                if (check.checked) {
+                    element.style.display='block';
+                }
+                else {
+                    element.style.display='none';
+                }
+            }
+    </script>
 	<style>
 #tabs li {
 	xlist-style-type: none;
@@ -73,6 +85,7 @@
 	</ul>
 	<div id="panels">
 		<div id="panel1">
+			<p:growl id="message" showDetail="true" />
 			<h:dataTable value="#{ventanaClientesBEAN.mostrarDetalle()}" var="resumencuenta"
 				border="4" style="width: 900px; margin-left: 5%; margin-top: 2%">
 				<h:column>
@@ -99,7 +112,18 @@
 					</f:facet>
 					<h:outputLabel value="#{resumencuenta.salto}" />
 				</h:column>
+				<h:column >
+					<f:facet name="header">
+						<h:outputLabel value="Seleccionar" />
+					</f:facet>
+					<h:form style="background: blue;">
+						<input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" style=" margin-left: 50%;"/>
+					</h:form>
+				</h:column>
 			</h:dataTable>
+			<div id="panel4" style="display: none; margin-left: 100px; margin-top: 2%;">
+				<ui:include src="calendar.xhtml" />
+			</div>
 		</div>
 		<div id="panel2" class="hide">
 			<h:dataTable value="#{ventanaClientesBEAN.listaClientes()}" var="listalogin"

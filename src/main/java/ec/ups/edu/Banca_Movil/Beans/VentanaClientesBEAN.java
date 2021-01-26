@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -36,10 +38,15 @@ public class VentanaClientesBEAN {
 	private TransaccionesON transaccionesON;
 	
 	private List<ResumenCuenta> datos;
-	
-	
-	
-		
+	private Date date3;
+	public Date getDate3() {
+		return date3;
+	}
+
+	public void setDate3(Date date3) {
+		this.date3 = date3;
+	}
+
 	public List<ResumenCuenta> mostrarDetalle() throws Exception {
 		cuenta=loginClientesON.fastLogin();
 		datos=new ArrayList<ResumenCuenta>();
@@ -55,4 +62,5 @@ public class VentanaClientesBEAN {
 	public List<LoginClientes> listaClientes() throws Exception{
 		return loginClientesON.listaLogeoCuenta(cuenta.getId());
 	}
+	
 }
