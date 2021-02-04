@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Login Admin</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style>
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color:  #363d3e ;
+  font-size: 1.2rem; /*tamaño de las letras*/
+  line-height: 1.6em; /* interlineado */
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.3em;
+}
+
+/* parrafos */
+p {
+  margin-bottom: 1.6em; /*margen inferior funciona como enter entre parrafos*/
+}
+
+.container {
+  width: 85%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #363d3e;
+  color: white;
+  padding: 2rem 0;
+
+  /* hacer el menu fijo */
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* ocuapamos todo el ancho */
+  right: 0;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.logo-nav-container {
+  display: flex;
+  justify-content: space-between;
+  /* lo alineamos al centro */
+  align-items: center;
+
+  flex-wrap: wrap;
+}
+
+/* logo */
+.logo {
+  letter-spacing: 15px;
+  font-size: 1.3em;
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* todos los "ul" que esten dentro de "navigation" */
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation ul li {
+  /* uno al lado del otro */
+  display: inline-block;
+}
+
+/* los enlaces dentro del menu */
+.navigation ul li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s linear;
+  border-radius: 5px;
+}
+
+.navigation ul li a:hover {
+  background: #cc4444;
+}
+
+.main {
+  padding-top: 12rem;
+}
+
+/*PIE DE PAGINA*/
+.footer {
+  background: #ade3f3;
+  padding: 4rem 0;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+
+.menu-link{
+    color: black;
+}
+
+.fb{
+    color: blue;
+}
+/* REPONSIVE */
+/* todas las caracteristicas que se mostraran a continuancion seran cuando tenga un ancho maximo de 767px */
+
+@media only screen and (max-width: 767px) {
+    .menu-icon{
+        display: block;
+        cursor: pointer;
+    }
+
+    .navigation{
+        width: 100%;
+    }
+    .navigation ul{
+        display: none;
+    }
+    .navigation ul.show{
+        display: block;
+    }
+      
+    .navigation ul li {
+        display: block;
+      }
+      
+      /* los enlaces dentro del menu */
+      .navigation ul li a {
+        display: block;
+        padding: 0.5rem 1rem;
+        transition: all 0.2s linear;
+        border-radius: 5px;
+      }
+      
+      .navigation ul li a:hover {
+        background: #cc4444;
+      }
+}
+
+
+.contenedor1 {
+	background: #FDFEFE;
+	border: 2px #1C2833 solid;
+	width: 420px;
+	text-align: center;
+	margin-left: 40%;
+	margin-top: 7%
+}
+.img1{
+	margin-left:50px;
+	float:left;
+	display: flex;
+}
+
+.divimg {
+	text-align: center;
+}
+
+.titulo {
+	width: 90%;
+}
+</style>
+</h:head>
+
+<body>
+
+	<div class="header">
+        <div class="container logo-nav-container">
+            <a href="index.xhtml" class="logo"><img src="imgLogin/logoP.png" width="100" height="50"/></a>
+            <span class="menu-icon">Ver menú</span>
+        
+            <div class="navigation">
+                <ul class="show">
+                    <li><a href="index.xhtml">Inicio</a></li>
+                    <li><a href="#">A cerca</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="calendar.xhtml">Contacto</a></li>
+                    <li><a href="login.xhtml">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+	<div class="img1">	
+		<img src="imagenes/intro1.jpg"/>
+	</div>
+
+
+	<h:form>
+		<div class="contenedor1">
+			<div>
+				<h:message for="txtUsuario" />
+				<h:message for="txtContrasena" />
+
+				<img src="imgLogin/logoP.png" width="250" height="200" />
+				<h1 class="titulo">INGRESE AL SISTEMA</h1>
+
+
+				<h:panelGrid columns="2" style="margin-left: 14%; ">
+					<h:outputLabel for="txtUsuario" value="Usuario:" />
+					<h:inputText id="txtUsuario" value="#{loginBean.usuario}"
+						style="padding:2%;" />
+					<h:outputLabel for="txtContrasena" value="Contraseña:" />
+					<h:inputSecret id="txtContrasena" value="#{loginBean.contrasena}"
+						required="True" style="padding:2%;" />
+				</h:panelGrid>
+				<br />
+				<h:commandButton action="#{loginBean.prueba()}" value="Acceder"
+					style="width:50%; background: #20cfb2; padding:3%;" />
+				<br /> <br />
+
+			</div>
+		</div>
+	</h:form>
+
+</body>
+</html>

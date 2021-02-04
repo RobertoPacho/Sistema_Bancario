@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Transacciones</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style>
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color:  #363d3e ;
+  font-size: 1.2rem; /*tamaño de las letras*/
+  line-height: 1.6em; /* interlineado */
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.3em;
+}
+
+/* parrafos */
+p {
+  margin-bottom: 1.6em; /*margen inferior funciona como enter entre parrafos*/
+}
+
+.container {
+  width: 85%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #363d3e;
+  color: white;
+  padding: 2rem 0;
+
+  /* hacer el menu fijo */
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* ocuapamos todo el ancho */
+  right: 0;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.logo-nav-container {
+  display: flex;
+  justify-content: space-between;
+  /* lo alineamos al centro */
+  align-items: center;
+
+  flex-wrap: wrap;
+}
+
+/* logo */
+.logo {
+  letter-spacing: 15px;
+  font-size: 1.3em;
+}
+
+.menu-icon {
+  display: none;
+}
+
+/* todos los "ul" que esten dentro de "navigation" */
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation ul li {
+  /* uno al lado del otro */
+  display: inline-block;
+}
+
+/* los enlaces dentro del menu */
+.navigation ul li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s linear;
+  border-radius: 5px;
+}
+
+.navigation ul li a:hover {
+  background: #cc4444;
+}
+
+.main {
+  padding-top: 12rem;
+}
+
+/*PIE DE PAGINA*/
+.footer {
+  background: #ade3f3;
+  padding: 4rem 0;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+
+.menu-link{
+    color: black;
+}
+
+.fb{
+    color: blue;
+}
+/* REPONSIVE */
+/* todas las caracteristicas que se mostraran a continuancion seran cuando tenga un ancho maximo de 767px */
+
+@media only screen and (max-width: 767px) {
+    .menu-icon{
+        display: block;
+        cursor: pointer;
+    }
+
+    .navigation{
+        width: 100%;
+    }
+    .navigation ul{
+        display: none;
+    }
+    .navigation ul.show{
+        display: block;
+    }
+      
+    .navigation ul li {
+        display: block;
+      }
+      
+      /* los enlaces dentro del menu */
+      .navigation ul li a {
+        display: block;
+        padding: 0.5rem 1rem;
+        transition: all 0.2s linear;
+        border-radius: 5px;
+      }
+      
+      .navigation ul li a:hover {
+        background: #cc4444;
+      }
+}
+.datatransacciones{
+	margin-top: 200px;
+	border:1px black solid;
+	width:600px;
+	margin-left: 35%;
+	
+}
+</style>
+
+</h:head>
+
+<body>
+	<div class="header">
+        <div class="container logo-nav-container">
+            <a href="../index.xhtml" class="logo"><img src="../Login/logo.png" width="100" height="50"/></a>
+            <span class="menu-icon">Ver menú</span>
+        
+            <div class="navigation">
+                <ul class="show">
+                    <li><a href="transacciones.xhtml">Transacciones</a></li>
+                    <li><a href="../Login/cajero.xhtml">Crear Cuenta</a></li>
+                    <li><a href="../index.xhtml">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<div class="datatransacciones">
+	<h:form id="trans" >
+		<h:outputText value="Buscar Cedula: " />
+		<br />
+		<p:inputText id="cedula" value="#{transaccionesBEAN.cedula}">
+			<p:ajax event="keyup" update="out1" />
+			<p:ajax event="keyup" update="ncuenta" />
+			<p:ajax event="keyup" update="saldo" />
+		</p:inputText>
+		<br />
+		<br />
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputText value="Cliente: " />
+			<h:outputText id="out1" value="#{transaccionesBEAN.buscarcedula()}" style="border: #000000 1px solid;" />
+			
+			#Cuenta:
+			<h:outputText id="ncuenta" value="#{transaccionesBEAN.cuentam()}"
+						style="border: #000000 1px solid;" />
+			$Saldo:
+			<h:outputText id="saldo" value="#{transaccionesBEAN.pedirsalto()}"
+						style="border: #000000 1px solid;" />
+						
+			Monto $:
+			<h:inputText value="#{transaccionesBEAN.monto}" />
+			
+			<p:growl id="msg"/>
+			<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+				Tipo de transaccion:
+        		<p:selectBooleanCheckbox value="#{transaccionesBEAN.check1}" itemLabel="Retiro">
+        		</p:selectBooleanCheckbox>
+        		<p:selectBooleanCheckbox value="#{transaccionesBEAN.check2}" itemLabel="Deposito">
+        		</p:selectBooleanCheckbox>
+        	
+    		</h:panelGrid>
+			
+		</h:panelGrid>
+		<h:commandButton value="CONTINUAR" action="#{transaccionesBEAN.retiro()}" style="padding:10px; width:200px;"/>
+	</h:form>
+</div>
+</body>
+</html>

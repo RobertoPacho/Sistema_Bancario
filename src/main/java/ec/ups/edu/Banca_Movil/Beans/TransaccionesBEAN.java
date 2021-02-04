@@ -175,18 +175,33 @@ public class TransaccionesBEAN {
 	}
 
 	public void reset() throws Exception {
-		cedula = " ";
-		nombres = " ";
+		cedula = "";
+		nombres = "";
 		monto = 0.0;
 		numerocuenta = "";
 		check1 = false;
 		check2 = false;
+		saldo=0.0;
 	}
 
 	public int codigotransaccion() throws Exception {
 		id = transaccionesON.listaTransacciones().size() + 1;
 		return id;
 	}
+	
+	public double pedirsalto() throws Exception {
+		List<Cuenta> listaC = cuentaON.listacuentasCliente2(cedula);
+		if (listaC.size() > 0) {
+			for (int i = 0; i < listaC.size(); i++) {
+				if (listaC.get(i).getTipoCuenta().equals("cuenta de ahorros")) {
+					saldo=transaccionesON.saldo(listaC.get(i).getId());
+				}
+				
+				}
+		}
+		return saldo;
+	}
+	
 
 	public String cuentam() throws Exception {
 		List<Cuenta> listaC = cuentaON.listacuentasCliente2(cedula);

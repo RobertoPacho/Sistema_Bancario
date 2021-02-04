@@ -173,7 +173,7 @@ public class LoginBean {
 				login.setIp(direccionip());
 				login.setEmpleado(empleado);
 				aloginOn.insertar(login);
-				return "Administrador";
+				return "CrearAdministrativo";
 			case "Cajero":
 				acceso = true;
 				login.setId(idLogin());

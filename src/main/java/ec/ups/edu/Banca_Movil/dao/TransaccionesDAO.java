@@ -25,6 +25,8 @@ public class TransaccionesDAO {
 	private Transacciones transacciones;
 	@PersistenceContext(name = "Banca_MovilPersistenceUnit")
 	private EntityManager em;
+	
+	double saldo=0;
 
 	public boolean insert(Transacciones transacciones) throws Exception {
 		em.persist(transacciones);
@@ -41,15 +43,19 @@ public class TransaccionesDAO {
 
 	public double sumaDepositos(int cuenta_id) {
 		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;
+		saldo=0;
 		Query q = em.createQuery(
 				"SELECT SUM(cantidad) FROM Transacciones  WHERE tipo='Deposito' AND cuenta_id=:cuenta_id");
 		q.setParameter("cuenta_id", cuenta_id);
-		return (Double) q.getSingleResult();
+		if(q.getSingleResult()!=null) {
+			saldo=(Double) q.getSingleResult();
+		}
+		return saldo;
 	}
 	
 	public double sumaRetiros(int cuenta_id) {
 		// select SUM(cantidad) from transacciones where tipo='Deposito' and cuenta_id=1;do
-		double saldo=0;
+		saldo=0;
 		Query q = em.createQuery(
 				"SELECT SUM(cantidad) FROM Transacciones  WHERE tipo='Retiro' AND cuenta_id=:cuenta_id");
 		q.setParameter("cuenta_id", cuenta_id);

@@ -50,4 +50,9 @@ public class TransaccionesON {
 		return transaccionesDAO.sumaRetiros(cuentaid);
 	}
 	
+	public Double saldo(int cuentaid) {
+		double saldo=depositos(cuentaid)-retiros(cuentaid);
+		return saldo;
+	}
+	
 }

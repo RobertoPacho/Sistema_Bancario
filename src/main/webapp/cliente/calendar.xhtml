@@ -9,19 +9,23 @@
 </h:head>
 
 <body>
+<div style="margin-left: 20%;  background: #66a2ab; width: 1050px; text-align: center;">
 	<h:form>
-	<div style="margin-top: 40px;">
-	<h:panelGrid columns="1">
+	
+	<div >
+	<br/>
+	<h:panelGrid columns="1" style="margin-left: 5%;">
 		<h:outputText value="Tipo Transaccion:" />
 		
 		<h:selectOneMenu id="tipoCuenta" value="#{aperturaCuentaBEAN.tipoCuenta}" style="width: 180px;">
-			<f:selectItem itemLabel="Retito" itemValue="Retiro" />
-			<f:selectItem itemLabel="Deposito"	itemValue="Deposito" />
+			<f:selectItem itemLabel="Todos" itemValue="Todos" />
+			<f:selectItem itemLabel="Retiros" itemValue="Retiros" />
+			<f:selectItem itemLabel="Depositos"	itemValue="Depositos" />
 		</h:selectOneMenu>
 	</h:panelGrid>
 	</div>
 	
-	<div style="margin-left: 16%; margin-top: -5%;">
+	<div style="margin-left: 25%; margin-top: -7.4%;">
 	<h:panelGrid columns="2">
 		<h:outputText value="Fecha desde:" />
 		<h:outputText value="#{calendarView.date3}">
@@ -30,7 +34,7 @@
 		<p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
 	</h:panelGrid>
 	</div>
-	<div style="margin-left: 38%; margin-top: -5.5%; ">
+	<div style="margin-left: 60%; margin-top: -7.5%; ">
 	<h:panelGrid columns="2">
 		<h:outputText value="Fecha Hasta:" />
 		<h:outputText value="#{calendarView.date3}">
@@ -39,9 +43,12 @@
 		<p:calendar id="button1" value="#{calendarView.date3}" showOn="button" />
 	</h:panelGrid>
 	</div>
-	<div style="margin-left: 20%" >
+	<br/>
+	<div  >
 		<h:button  value="Consultar" style="text-align: center; width: 180px;"></h:button>
 	</div>
+	<br/>
 </h:form>
+</div>
 </body>
 </html>

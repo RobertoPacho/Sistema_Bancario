@@ -195,7 +195,7 @@ public class LoginClientesBean {
 				correoON.enviarConGMail(cuenta.getCorreo(), "COOPERATIVA E.S.E",
 						"COOPERATIVA E.S.E le informa que el acceso a la plataforma COOPERATIVA E.S.E_Virtual fue:  CORRECTA   Maquina:" + direccionip()
 								+ " Fecha:" + fecha);
-				return "ventanaCliente.xhtml";
+				return "indexcliente.xhtml";
 			} else {
 				loginClients.setId(idLogin());
 				loginClients.setFecha(fecha);

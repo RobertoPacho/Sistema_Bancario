@@ -60,6 +60,7 @@ public class VentanaClientesBEAN {
 	}
 	
 	public List<LoginClientes> listaClientes() throws Exception{
+		cuenta=loginClientesON.fastLogin();
 		return loginClientesON.listaLogeoCuenta(cuenta.getId());
 	}
 	
